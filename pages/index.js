@@ -187,18 +187,18 @@ export default function Home({ baseUrl, submissionPredictions }) {
   const handleSubmit = async (e, prompt) => {
     e.preventDefault();
     setError(null);
-    setFirstTime(false);
+    // setFirstTime(false);
 
     // update num runs and save to local storage
-    const newNumRuns = Number(numRuns) + 1;
-    setNumRuns(newNumRuns);
-    localStorage.setItem("numRuns", newNumRuns);
+    // const newNumRuns = Number(numRuns) + 1;
+    // setNumRuns(newNumRuns);
+    // localStorage.setItem("numRuns", newNumRuns);
 
-    const hasClosedPopup = localStorage.getItem("hasClosedPopup");
+    // const hasClosedPopup = localStorage.getItem("hasClosedPopup");
 
-    if (!hasClosedPopup && newNumRuns != 0 && newNumRuns % 10 == 0) {
-      setPopupOpen(true);
-    }
+    // if (!hasClosedPopup && newNumRuns != 0 && newNumRuns % 10 == 0) {
+    //   setPopupOpen(true);
+    // }
 
     const submissionId = uuidv4();
 
@@ -286,12 +286,12 @@ export default function Home({ baseUrl, submissionPredictions }) {
     }
 
     // get number of runs from local storage
-    const storedNumRuns = localStorage.getItem("numRuns");
-    if (storedNumRuns) {
-      setNumRuns(storedNumRuns);
-    } else {
-      localStorage.setItem("numRuns", numRuns);
-    }
+    // const storedNumRuns = localStorage.getItem("numRuns");
+    // if (storedNumRuns) {
+    //   setNumRuns(storedNumRuns);
+    // } else {
+    //   localStorage.setItem("numRuns", numRuns);
+    // }
 
     // setup id
     if (!anonId) {
