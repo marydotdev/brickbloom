@@ -90,26 +90,26 @@ export default function Home({ baseUrl, submissionPredictions }) {
     return predictions.filter((p) => p.version === version);
   }
 
-  // const handleCheckboxChange = (e) => {
-  //   const modelId = parseInt(e.target.value, 10);
+  const handleCheckboxChange = (e) => {
+    const modelId = parseInt(e.target.value, 10);
 
-  //   // Update the checked flag for the model with the matching modelId
-  //   const updatedModels = models.map((model) => {
-  //     if (model.id === modelId) {
-  //       return {
-  //         ...model,
-  //         checked: e.target.checked,
-  //       };
-  //     }
-  //     return model;
-  //   });
+    // Update the checked flag for the model with the matching modelId
+    const updatedModels = models.map((model) => {
+      if (model.id === modelId) {
+        return {
+          ...model,
+          checked: e.target.checked,
+        };
+      }
+      return model;
+    });
 
-  //   // Set the new models array
-  //   setModels(updatedModels);
+    // Set the new models array
+    setModels(updatedModels);
 
-  //   // save to local storage
-  //   localStorage.setItem("models", JSON.stringify(updatedModels));
-  // };
+    // save to local storage
+    localStorage.setItem("models", JSON.stringify(updatedModels));
+  };
 
   // cmd + enter to submit
   const onKeyDown = (e) => {
@@ -389,15 +389,13 @@ export default function Home({ baseUrl, submissionPredictions }) {
             </form>
           </div>
 
-          {loading && "Loading..."}
+          {/* {loading && "Loading..."} */}
 
           <div className="-mt-2">
-            {!loading && getSelectedModels().length == 0 && <EmptyState />}
-
+            {/* {!loading && getSelectedModels().length == 0 && <EmptyState />} */}
             {getSelectedModels().map((model) => (
               <div key={model.id} className="mt-5">
                 <div className="flex gap-6 tracking-wide mb-10">
-
                   {/* Row for predictions */}
                   <div className="grid grid-cols-3 w-full space-y-4">
                     {getPredictionsByVersion(model.version)
@@ -419,11 +417,11 @@ export default function Home({ baseUrl, submissionPredictions }) {
           </div>
         </div>
 
-        {/* <Checkboxes
+        <Checkboxes
           models={models}
           handleCheckboxChange={handleCheckboxChange}
           className={"mt-28"}
-        /> */}
+        />
       </div>
     </div>
   );
@@ -478,6 +476,7 @@ export function EmptyState() {
     </div>
   );
 }
+
 export function EmptyStateHistory() {
   return (
     <div className="text-center mt-16">

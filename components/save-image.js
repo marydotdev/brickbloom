@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import FileSaver from "file-saver";
+import slugify from 'slugify';
 
 export function SaveImage({
   open,
@@ -10,11 +11,12 @@ export function SaveImage({
   url,
   annotatedUrl = false,
 }) {
-  const download = async (url, id) => {
+  const download = async (url, prompt) => {
+    const slug = slugify(prompt, '_')
     if (typeof url !== "list") {
-      FileSaver.saveAs(url[0], `${id}.png`);
+      FileSaver.saveAs(url[0], `${slug}.png`);
     } else {
-      FileSaver.saveAs(url, `${id}.png`);
+      FileSaver.saveAs(url, `${slug}.png`);
     }
   };
 
@@ -152,7 +154,7 @@ export function SaveImage({
                       Open Link
                     </a>
                     <button
-                      onClick={() => download(url)}
+                      onClick={() => download(url, prediction.input.prompt)}
                       className="mt-4 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                     >
                       Download Image
