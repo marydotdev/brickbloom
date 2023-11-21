@@ -46,6 +46,7 @@ export default async function handler(req, res) {
       anon_id: req.body.anon_id,
       source: req.body.source,
     });
+    // console.log("searchParams", searchParams.get("anon_id"));
 
     const input = req.body.input;
     const body = JSON.stringify({
@@ -78,7 +79,9 @@ export default async function handler(req, res) {
       return;
     }
 
+
     const prediction = await response.json();
+
     res.statusCode = 201;
     res.end(JSON.stringify(prediction));
   } else if (req.body.source == "openai") {

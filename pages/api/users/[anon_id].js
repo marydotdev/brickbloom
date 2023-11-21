@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     .from("predictions")
     .select()
     .eq("anon_id", req.query.anon_id)
-    .limit(50)
+    .limit(30)
     .order("created_at", { ascending: false });
 
   if (error) {

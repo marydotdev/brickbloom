@@ -13,13 +13,14 @@ export default function Prediction({ prediction }) {
     if (prediction.output) {
       return prediction.output;
     } else {
-      return `https://ennwjiitmiqwdrgxkevm.supabase.co/storage/v1/object/public/images/public/${prediction.id}.png`;
+      return `https://gptskgxtfsenmiulyvwv.supabase.co/storage/v1/object/public/images/public/${prediction.id}.png`;
     }
   }
 
   async function rate(id, rating) {
     const animals = ["🦓", "🦒", "🐘", "🦏", "🐪", "🐅", "🦍"];
     const animal = animals[Math.floor(Math.random() * animals.length)];
+    const anonId = localStorage.getItem("anonId");
     toast(`${animal} Thanks for your feedback!`);
 
     const response = await fetch(`/api/ratings/${id}`, {
@@ -27,7 +28,7 @@ export default function Prediction({ prediction }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ rating, anon_id: prediction.anon_id }),
+      body: JSON.stringify({ rating, anon_id: anonId }),
     });
     const ratingResponse = await response.json();
     setShowRating(false);

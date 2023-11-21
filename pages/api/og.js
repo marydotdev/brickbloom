@@ -10,7 +10,7 @@ export default async function handler(req) {
   try {
     const { searchParams } = req.nextUrl;
     const bucketUrl =
-      "https://ennwjiitmiqwdrgxkevm.supabase.co/storage/v1/object/public/images/public/";
+      "https://gptskgxtfsenmiulyvwv.supabase.co/storage/v1/object/public/brickbloom/public/";
     let predictionIds = searchParams.get("ids").split(",");
     let outputUrls = predictionIds.map((id) => `${bucketUrl}${id}.png`);
     const prompt = searchParams.get("prompt");

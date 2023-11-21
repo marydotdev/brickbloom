@@ -10,6 +10,7 @@
     "test": "npm run lint && npm run build"
   },
   "dependencies": {
+    "@bytescale/sdk": "^3.10.0",
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.18",
     "@prisma/client": "^4.14.0",

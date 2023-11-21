@@ -135,10 +135,10 @@ export default function Home({ baseUrl, submissionPredictions }) {
         model: model.name,
         anon_id: anonId,
         submission_id: submissionId,
-        ...(model.source != "replicate" && { id: uuidv4() }),
-        ...(model.source != "replicate" && {
-          created_at: new Date().toISOString(),
-        }),
+        // ...(model.source != "replicate" && { id: uuidv4() }),
+        // ...(model.source != "replicate" && {
+        //   created_at: new Date().toISOString(),
+        // }),
       }),
     });
   }
@@ -302,6 +302,7 @@ export default function Home({ baseUrl, submissionPredictions }) {
   }, []);
 
   console.log("predictions: ", predictions);
+  console.log("anonId: ", anonId);
 
   return (
     <div className="mx-auto container p-5">
@@ -315,7 +316,7 @@ export default function Home({ baseUrl, submissionPredictions }) {
       />
 
       <Popup open={popupOpen} setOpen={setPopupOpen} />
-      <Pills />
+      {/* <Pills /> */}
 
       <div className="pt-4">
         <div className="mx-0 max-w-7xl">
@@ -398,7 +399,7 @@ export default function Home({ baseUrl, submissionPredictions }) {
               <div key={model.id} className="mt-5">
                 <div className="flex gap-6 tracking-wide mb-10">
                   {/* Model description */}
-                  <div className="w-72 border-l-4 border-gray-900 pl-5 md:pl-6 py-2">
+                  {/* <div className="w-72 border-l-4 border-gray-900 pl-5 md:pl-6 py-2">
                     <Link
                       href={`https://replicate.com/${model.owner.toLowerCase()}?utm_source=project&utm_campaign=zoo`}
                       target="_blank"
@@ -430,10 +431,10 @@ export default function Home({ baseUrl, submissionPredictions }) {
                           />
                         ))}
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* Row for predictions */}
-                  <div className="flex w-full overflow-y-hidden overflow-x-auto space-x-6">
+                  <div className="grid grid-cols-3 w-full space-y-4">
                     {getPredictionsByVersion(model.version)
                       .reverse()
                       .map((prediction) => (

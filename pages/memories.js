@@ -7,7 +7,7 @@ export default function History() {
   const [anonId, setAnonId] = useState(null);
 
   function getPredictionOutput(prediction) {
-    return `https://ennwjiitmiqwdrgxkevm.supabase.co/storage/v1/object/public/images/public/${prediction.id}.png`;
+    return `https://gptskgxtfsenmiulyvwv.supabase.co/storage/v1/object/public/images/public/${prediction.id}.png`;
   }
 
   const clearHistory = () => {
@@ -29,6 +29,8 @@ export default function History() {
 
   useEffect(() => {
     const anonId = localStorage.getItem("anonId");
+    const predictions = localStorage.getItem("predictions");
+    console.log("predictions", predictions);
     setAnonId(anonId);
     getAndSetHistory(anonId);
   }, []);
@@ -56,17 +58,24 @@ export default function History() {
             >
               {history.map((prediction) => (
                 <li key={prediction.id} className="relative">
-                  <Prediction prediction={prediction} />
-                  <p className="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">
+                  {/* <Prediction prediction={prediction} /> */}
+                  <img src={`https://gptskgxtfsenmiulyvwv.supabase.co/storage/v1/object/public/images/public/${prediction.id}.png`} alt="output" className={`rounded-xl aspect-square`} loading="lazy" />
+                  {/* <img
+                    src={getOutput(prediction)}
+                    alt="output"
+                    className={`rounded-xl aspect-square`}
+                    loading="lazy"
+                  /> */}
+                  {/* <p className="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">
                     {prediction.model}
                   </p>
                   <p className="pointer-events-none block text-sm font-medium text-gray-500">
                     {prediction.input.prompt}
-                  </p>
+                  </p> */}
                 </li>
               ))}
             </ul>
-            {/* <div className="mt-12">
+            <div className="mt-12">
               <button
                 onClick={() => handleClearHistory()}
                 type="button"
@@ -75,7 +84,7 @@ export default function History() {
               >
                 Clear Memories
               </button>
-            </div> */}
+            </div>
           </>
         )}
       </>
