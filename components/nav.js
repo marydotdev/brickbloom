@@ -53,7 +53,9 @@ export default function Nav() {
           />
         </div>
         <div>
-          <h1 className='text-4xl uppercase font-bold'>Brick Bloom</h1>
+          <Link href="/">
+            <h1 className='text-4xl uppercase font-bold'>Brick Bloom</h1>
+          </Link>
         </div>
       </div>
     </nav>

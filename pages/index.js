@@ -10,8 +10,8 @@ import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router";
 import Pills from "../components/pills";
 
-const HOST = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
+const HOST = process.env.NEXT_PUBLIC_VERCEL_URL
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
   : "http://localhost:3000";
 
 import seeds from "../lib/seeds.js";
@@ -322,11 +322,6 @@ export default function Home({ baseUrl, submissionPredictions }) {
         <div className="mx-0 max-w-7xl">
           <div className="flex justify-between mx-0">
             <div>
-              {firstTime && (
-                <span className="text-2xl font-medium tracking-tight text-gray-500">
-                  Welcome to the Zoo, a playground for text to image models.{" "}
-                </span>
-              )}
               <span className="text-2xl font-medium tracking-tight text-gray-900">
                 What do you want to see?
               </span>
