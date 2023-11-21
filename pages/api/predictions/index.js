@@ -7,8 +7,8 @@ import fetch from "node-fetch";
 const REPLICATE_API_HOST = "https://api.replicate.com";
 const STABILITY_API_HOST = "https://api.stability.ai";
 
-// const WEBHOOK_HOST = "https://brickbloom.vercel.app";
-const WEBHOOK_HOST = process.env.NGROK_HOST
+const WEBHOOK_HOST = "https://brickbloom.vercel.app";
+// const WEBHOOK_HOST = process.env.NGROK_HOST
 
 // const WEBHOOK_HOST = process.env.NEXT_PUBLIC_VERCEL_URL
 //   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
