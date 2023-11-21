@@ -3,7 +3,7 @@ import Prediction from "../components/prediction";
 import Popup from "../components/popup";
 import ZooHead from "../components/zoo-head";
 import ExternalLink from "../components/external-link";
-import promptmaker from "promptmaker";
+// import promptmaker from "promptmaker";
 import Link from "next/link";
 import MODELS from "../lib/models.js";
 import { v4 as uuidv4 } from "uuid";
@@ -78,34 +78,38 @@ export default function Home({ baseUrl, submissionPredictions }) {
     setModels(updatedModels);
   };
 
+  // function getSelectedModels() {
+  //   return models.filter((m) => m.checked);
+  // }
+
   function getSelectedModels() {
-    return models.filter((m) => m.checked);
+    return models.filter((m) => m.id === 4);
   }
 
   function getPredictionsByVersion(version) {
     return predictions.filter((p) => p.version === version);
   }
 
-  const handleCheckboxChange = (e) => {
-    const modelId = parseInt(e.target.value, 10);
+  // const handleCheckboxChange = (e) => {
+  //   const modelId = parseInt(e.target.value, 10);
 
-    // Update the checked flag for the model with the matching modelId
-    const updatedModels = models.map((model) => {
-      if (model.id === modelId) {
-        return {
-          ...model,
-          checked: e.target.checked,
-        };
-      }
-      return model;
-    });
+  //   // Update the checked flag for the model with the matching modelId
+  //   const updatedModels = models.map((model) => {
+  //     if (model.id === modelId) {
+  //       return {
+  //         ...model,
+  //         checked: e.target.checked,
+  //       };
+  //     }
+  //     return model;
+  //   });
 
-    // Set the new models array
-    setModels(updatedModels);
+  //   // Set the new models array
+  //   setModels(updatedModels);
 
-    // save to local storage
-    localStorage.setItem("models", JSON.stringify(updatedModels));
-  };
+  //   // save to local storage
+  //   localStorage.setItem("models", JSON.stringify(updatedModels));
+  // };
 
   // cmd + enter to submit
   const onKeyDown = (e) => {
@@ -352,7 +356,7 @@ export default function Home({ baseUrl, submissionPredictions }) {
                     placeholder="Enter a prompt to display an image"
                   />
 
-                  <button
+                  {/* <button
                     className="absolute right-3.5 top-2 text-gray-500 hover:text-gray-900 px-1 py-2 rounded-md flex justify-center items-center"
                     type="button"
                     onClick={() => setPrompt(promptmaker({ flavors: null }))}
@@ -371,7 +375,7 @@ export default function Home({ baseUrl, submissionPredictions }) {
                         d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
                       />
                     </svg>
-                  </button>
+                  </button> */}
                 </div>
                 <div className="ml-3 mb-1.5 inline-flex">
                   <button
@@ -393,40 +397,6 @@ export default function Home({ baseUrl, submissionPredictions }) {
             {getSelectedModels().map((model) => (
               <div key={model.id} className="mt-5">
                 <div className="flex gap-6 tracking-wide mb-10">
-                  {/* Model description */}
-                  {/* <div className="w-72 border-l-4 border-gray-900 pl-5 md:pl-6 py-2">
-                    <Link
-                      href={`https://replicate.com/${model.owner.toLowerCase()}?utm_source=project&utm_campaign=zoo`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <h5 className="text-xs md:text-sm text-gray-500 hover:text-gray-900">
-                        {model.owner}
-                      </h5>
-                    </Link>
-                    <Link
-                      href={model.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <h5 className="text-base md:text-xl font-medium text-gray-800 hover:text-gray-500">
-                        {model.name}
-                      </h5>
-                    </Link>
-                    <p className="text-xs md:text-sm text-gray-500 mt-2 md:mt-4">
-                      {model.description}
-                    </p>
-
-                    <div className="mt-2 md:mt-6 flex gap-2">
-                      {model.links != null &&
-                        model.links.map((link) => (
-                          <ExternalLink
-                            key={`${model.id}-${link.url}`}
-                            link={link}
-                          />
-                        ))}
-                    </div>
-                  </div> */}
 
                   {/* Row for predictions */}
                   <div className="grid grid-cols-3 w-full space-y-4">
@@ -449,11 +419,11 @@ export default function Home({ baseUrl, submissionPredictions }) {
           </div>
         </div>
 
-        <Checkboxes
+        {/* <Checkboxes
           models={models}
           handleCheckboxChange={handleCheckboxChange}
           className={"mt-28"}
-        />
+        /> */}
       </div>
     </div>
   );
@@ -473,7 +443,7 @@ const Checkboxes = ({ models, handleCheckboxChange, className }) => {
                   type="checkbox"
                   id={`model_input_${model.id}`}
                   value={model.id}
-                  checked={model.checked}
+                  checked={true}
                   onChange={handleCheckboxChange}
                 />
               </div>
