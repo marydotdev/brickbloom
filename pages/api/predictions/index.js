@@ -7,9 +7,17 @@ import fetch from "node-fetch";
 const REPLICATE_API_HOST = "https://api.replicate.com";
 const STABILITY_API_HOST = "https://api.stability.ai";
 
-const WEBHOOK_HOST = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : process.env.NGROK_HOST;
+// const WEBHOOK_HOST = process.env.VERCEL_URL
+//   ? `https://${process.env.VERCEL_URL}`
+//   : process.env.NGROK_HOST;
+
+let WEBHOOK_HOST;
+
+if (process.env.NODE_ENV === "production") {
+  WEBHOOK_HOST = `https://${process.env.PRODUCTION_URL}`;
+} else if (process.env.NODE_ENV === "development") {
+  WEBHOOK_HOST = process.env.NGROK_HOST;
+}
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
