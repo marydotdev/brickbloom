@@ -18,10 +18,8 @@ export default function Prediction({ prediction }) {
   }
 
   async function rate(id, rating) {
-    const animals = ["🦓", "🦒", "🐘", "🦏", "🐪", "🐅", "🦍"];
-    const animal = animals[Math.floor(Math.random() * animals.length)];
     const anonId = localStorage.getItem("anonId");
-    toast(`${animal} Thanks for your feedback!`);
+    toast(`Thanks for your feedback!`);
 
     const response = await fetch(`/api/ratings/${id}`, {
       method: "POST",

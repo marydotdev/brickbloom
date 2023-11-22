@@ -2,13 +2,9 @@ import { useState, useEffect } from "react";
 import Prediction from "../components/prediction";
 import Popup from "../components/popup";
 import ZooHead from "../components/zoo-head";
-import ExternalLink from "../components/external-link";
-// import promptmaker from "promptmaker";
-import Link from "next/link";
 import MODELS from "../lib/models.js";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router";
-import Pills from "../components/pills";
 
 const HOST = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
@@ -309,7 +305,7 @@ export default function Home({ baseUrl, submissionPredictions }) {
   console.log("anonId: ", anonId);
 
   return (
-    <div className="mx-auto container p-5">
+    <div className="mx-auto p-4">
       <ZooHead
         ogDescription={
           submissionPredictions && submissionPredictions.length > 0
@@ -322,7 +318,7 @@ export default function Home({ baseUrl, submissionPredictions }) {
       <Popup open={popupOpen} setOpen={setPopupOpen} />
       {/* <Pills /> */}
 
-      <div className="pt-4">
+      <div className="">
         <div className="mx-0 max-w-7xl">
           <div className="flex justify-between mx-0">
             <div>
@@ -344,8 +340,7 @@ export default function Home({ baseUrl, submissionPredictions }) {
               className="w-full"
               onSubmit={(e) => handleSubmit(e, prompt)}
             >
-              <div className="flex relative mt-2">
-                {" "}
+              <div className="max-w-xl flex flex-col">
                 <div className="w-full h-full relative">
                   <textarea
                     name="prompt"
@@ -355,29 +350,8 @@ export default function Home({ baseUrl, submissionPredictions }) {
                     onChange={(e) => setPrompt(e.target.value)}
                     placeholder="Enter a prompt to display an image"
                   />
-
-                  {/* <button
-                    className="absolute right-3.5 top-2 text-gray-500 hover:text-gray-900 px-1 py-2 rounded-md flex justify-center items-center"
-                    type="button"
-                    onClick={() => setPrompt(promptmaker({ flavors: null }))}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-5 h-5"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
-                      />
-                    </svg>
-                  </button> */}
                 </div>
-                <div className="ml-3 mb-1.5 inline-flex">
+                <div className="ml-auto">
                   <button
                     className="button bg-brand h-full flex justify-center items-center font-bold hover:bg-orange-600"
                     type="submit"
