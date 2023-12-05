@@ -6,14 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "stripe:listen": "stripe listen --forward-to=localhost:3000/api/webhooks"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.0.10",
-    "@supabase/supabase-js": "^2.39.0",
+    "@clerk/nextjs": "^4.27.2",
+    "@planetscale/database": "^1.11.0",
+    "drizzle-orm": "^0.29.1",
     "next": "14.0.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "stripe": "^14.7.0"
   },
   "devDependencies": {
     "@types/node": "^20",
