@@ -1,9 +1,11 @@
-import Image from 'next/image'
+import HomeForm from "@/components/home-form";
+import Gallery from "@/components/gallery";
 
 export default function Home() {
   return (
     <div>
-      <h1>Brickbloom</h1>
+      <HomeForm />
+      <Gallery />
     </div>
-  )
+  );
 }
