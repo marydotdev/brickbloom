@@ -5,11 +5,13 @@ import Image from "next/image";
 import { Redis } from "@upstash/redis";
 import Link from 'next/link';
 
-// const redis = Redis.fromEnv();
+
+const URL = `${process.env.NEXT_PUBLIC_REDIS_URL}`;
+const TOKEN = `${process.env.NEXT_PUBLIC_REDIS_TOKEN}`;
 
 const redis = new Redis({
-  url: 'https://us1-main-akita-40968.upstash.io',
-  token: 'AaAIACQgZTljOGJiODEtZTVkZS00ZDcwLWE2ZjQtMjMwYjNiN2EwMTVhNTRiYmY5OGI5YjNjNGZmMmI4NTAyYWVmYWFmNWVlYmY=',
+  url: URL,
+  token: TOKEN,
 })
 
 
