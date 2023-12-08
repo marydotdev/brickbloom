@@ -58,9 +58,9 @@ export default function Gallery() {
   }
 
   return (
-    <div className="relative px-4 w-full grid grid-cols-4 gap-4">
+    <div className="relative px-4 lg:px-12 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
       {images.map((image) => (
-        <div key={image?.key} className="max-w-md px-2 pt-4 pb-12 flex flex-col gap-4 bg-white shadow-inner drop-shadow-xl hover:transform hover:rotate-3 hover:scale-105">
+        <div key={image?.key} className="max-w-md px-2 pt-4 pb-12 flex flex-col gap-4 bg-white shadow-inner drop-shadow-xl lg:hover:transform lg:hover:rotate-3 lg:hover:scale-105">
           <Link href={`/${image?.key}`}>
           <Image
             alt="output image"
