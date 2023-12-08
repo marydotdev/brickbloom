@@ -4,6 +4,7 @@ import { generate } from "@/lib/actions";
 import useEnterSubmit from "@/lib/use-enter-submit";
 import { SendHorizonal } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+// @ts-ignore
 import { useFormStatus } from "react-dom";
 import LoadingCircle from "./loading-circle";
 import { cn, getPlaceholderPrompt } from "@/lib/utils";
