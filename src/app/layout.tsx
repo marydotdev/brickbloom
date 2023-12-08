@@ -15,9 +15,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Brickbloom",
-  description:
-    "Generate Lego Inspired AI Art",
+  description: "Generate Lego Inspired AI Art",
   metadataBase: new URL("https://brickbloom.com"),
+  other: {
+    "google-ad-sense": "ca-pub-1553587147774243",
+  },
 };
 
 export default function RootLayout({
