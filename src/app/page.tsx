@@ -1,11 +1,11 @@
 import HomeForm from "@/components/home-form";
-import Gallery from "@/components/gallery";
+import CuratedGallery from "@/components/curated-gallery";
 
 export default function Home() {
   return (
     <div>
       <HomeForm />
-      <Gallery />
+      <CuratedGallery />
     </div>
   );
 }
