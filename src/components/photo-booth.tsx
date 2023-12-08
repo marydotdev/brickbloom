@@ -37,7 +37,7 @@ export default function PhotoBooth({ image }: { image: string | null }) {
 
   return (
     <div
-      className="group relative mx-auto mt-6 aspect-square w-full max-w-xl animate-fade-up overflow-hidden rounded-2xl border border-gray-200 opacity-0"
+      className="group relative mx-auto mt-6 aspect-square w-full max-w-xl animate-fade-up overflow-hidden border border-gray-200 opacity-0"
       style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
     >
       {id && image && (

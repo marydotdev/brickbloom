@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Redis } from "@upstash/redis";
+import Link from 'next/link';
 
 // const redis = Redis.fromEnv();
 
@@ -57,10 +58,10 @@ export default function Gallery() {
   }
 
   return (
-    <div className="relative px-4 w-full grid grid-cols-3 gap-4">
+    <div className="relative px-4 w-full grid grid-cols-4 gap-4">
       {images.map((image) => (
-        <div key={image?.key} className="max-w-md">
-          <p>{image?.data?.prompt as string}</p>
+        <div key={image?.key} className="max-w-md px-2 pt-4 pb-12 flex flex-col gap-4 bg-white shadow-inner drop-shadow-xl hover:transform hover:rotate-3 hover:scale-105">
+          <Link href={`/${image?.key}`}>
           <Image
             alt="output image"
             src={image?.data?.image as string}
@@ -69,6 +70,9 @@ export default function Gallery() {
             className="h-full object-cover"
             unoptimized
           />
+          <p className='text-center pt-4'>{image?.data?.prompt as string}</p>
+
+          </Link>
         </div>
       ))}
     </div>
