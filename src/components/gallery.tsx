@@ -13,7 +13,7 @@ const redis = new Redis({
 
 
 export default function Gallery() {
-  const [images, setImages] = useState(null);
+  const [images, setImages] = useState<({ key: string; data: Record<string, unknown> | null } | null)[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -38,7 +38,8 @@ export default function Gallery() {
 
         const filteredImages = fetchedImages.filter(Boolean);
         const sortedImages = filteredImages.sort((a, b) => {
-          return (b.data?.timestamp ?? 0) - (a.data?.timestamp ?? 0);
+          return (Number(b?.data?.timestamp) ?? 0) - (Number(a?.data?.timestamp) ?? 0);
+
         });
 
         setImages(sortedImages);
@@ -58,11 +59,11 @@ export default function Gallery() {
   return (
     <div className="relative px-4 w-full grid grid-cols-3 gap-4">
       {images.map((image) => (
-        <div key={image.key} className="max-w-md">
-          <p>{image.data?.prompt}</p>
+        <div key={image?.key} className="max-w-md">
+          <p>{image?.data?.prompt as string}</p>
           <Image
             alt="output image"
-            src={image.data?.image}
+            src={image?.data?.image as string}
             width={1280}
             height={1280}
             className="h-full object-cover"
