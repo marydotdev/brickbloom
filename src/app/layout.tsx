@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description: "Generate Lego Inspired AI Art",
   metadataBase: new URL("https://brickbloom.com"),
   other: {
-    "google-ad-sense": "ca-pub-1553587147774243",
+    "google-adsense-account": "ca-pub-1553587147774243",
   },
 };
 
