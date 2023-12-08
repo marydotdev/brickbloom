@@ -4,8 +4,8 @@ import { Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "sonner";
-
 
 
 const inter = Inter({
@@ -48,11 +48,12 @@ export default function RootLayout({
           {children}
         </main>
         <footer className="w-full py-4 lg:py-12">
-          <p className="text-center">
-            made by <a href="https://twitter.com/marydotdev" target='_blank' rel="noreferrer">mary</a>{" "}
+          <p className="text-center text-zinc-600">
+            made by <a href="https://twitter.com/marydotdev" target='_blank' rel="noreferrer" className='hover:text-sky-500'>mary</a>{" "}
           </p>
         </footer>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
