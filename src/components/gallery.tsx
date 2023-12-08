@@ -40,10 +40,11 @@ export default function Gallery() {
         const filteredImages = fetchedImages.filter(Boolean);
         const sortedImages = filteredImages.sort((a, b) => {
           return (Number(b?.data?.timestamp) ?? 0) - (Number(a?.data?.timestamp) ?? 0);
-
         });
 
-        setImages(sortedImages);
+        const recentImages = sortedImages.slice(0, 8);
+
+        setImages(recentImages);
       } catch (error) {
         console.error("Error fetching data from Redis:", error);
         // Handle error

@@ -3,15 +3,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
 
 
-const clash = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -32,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(clash.variable, inter.variable)}>
+      <body className={inter.variable}>
         <Toaster />
         <div className="w-full">
           <div className="mx-5 flex h-16 max-w-screen-xl items-center justify-between xl:mx-auto">
@@ -49,9 +44,14 @@ export default function RootLayout({
             </Link>
           </div>
         </div>
-        <main className="flex w-full flex-col items-center">
+        <main className="flex w-full flex-col items-center pb-12">
           {children}
         </main>
+        <footer className="w-full py-4 lg:py-12">
+          <p className="text-center">
+            made by <a href="https://twitter.com/marydotdev" target='_blank' rel="noreferrer">mary</a>{" "}
+          </p>
+        </footer>
         <Analytics />
       </body>
     </html>

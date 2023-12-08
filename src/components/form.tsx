@@ -40,7 +40,7 @@ export default function Form({
   return (
     <form
       ref={formRef}
-      className="mx-auto mt-6 flex w-full max-w-xl animate-fade-up items-center space-x-2 rounded-lg border border-gray-200 bg-white px-1 py-2 opacity-0 shadow-md sm:px-2 sm:py-4"
+      className="mx-auto flex w-full max-w-xl animate-fade-up items-center space-x-2 rounded-lg border border-gray-200 bg-white px-1 py-2 opacity-0 shadow-md sm:px-2 sm:py-4"
       style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
       action={(data) => {
         va.track("generate prompt", {
