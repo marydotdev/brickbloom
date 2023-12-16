@@ -6,10 +6,7 @@ import Link from "next/link";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "sonner";
-import { AFFILIATE_LINKS } from '@/lib/constants';
-
-const adList = AFFILIATE_LINKS.sort(() => Math.random() - 0.5);
-const ads = adList.slice(0, 3);
+import AffiliateLinks from "@/components/affiliate-links";
 
 
 const inter = Inter({
@@ -52,7 +49,10 @@ export default function RootLayout({
         <main className="flex w-full flex-col items-center pb-12">
           {children}
         </main>
-        <div className="w-full max-w-6xl mx-auto border border-black flex justify-between">
+        <div>
+          <AffiliateLinks />
+        </div>
+        {/* <div className="w-full max-w-6xl mx-auto border border-black flex justify-between">
           {ads.map((link) => (
             <div
               className="relative border-2 border-red-600 cursor-pointer"
@@ -73,7 +73,7 @@ export default function RootLayout({
               </a>
             </div>
           ))}
-        </div>
+        </div> */}
         <footer className="w-full py-4 lg:py-12">
           <p className="text-center text-zinc-600">
             made by{" "}
