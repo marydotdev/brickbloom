@@ -7,7 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "sonner";
 import AffiliateLinks from "@/components/affiliate-links";
-
+import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -16,9 +16,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Brickbloom",
-  description:
-    "Generate Lego Inspired AI Art",
+  description: "Generate Lego Inspired AI Art",
   metadataBase: new URL("https://brickbloom.com"),
+  other: {
+    "google-adsense-account": "ca-pub-1553587147774243",
+  },
 };
 
 export default function RootLayout({
@@ -29,19 +31,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.variable}>
+        <Script async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1553587147774243"
+            crossOrigin="anonymous"/>
         <Toaster />
         <div className="w-full">
           <div className="mx-5 flex h-16 max-w-screen-xl items-center justify-between xl:mx-auto">
             <Link href="/" className="flex items-center font-display text-2xl">
               <Image
                 src="/logo.png"
-                alt="Logo image"
+                alt="Brickbloom logo"
                 width="30"
                 height="30"
-                className="mr-2 rounded-sm"
+                className="mr-2"
                 unoptimized
               />
-              <p className="font-bold tracking-[-0.02em]">Brickbloom</p>
+              <p className="font-bold tracking-tight">Brickbloom</p>
             </Link>
           </div>
         </div>
