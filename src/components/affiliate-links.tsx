@@ -9,7 +9,6 @@ const ads = adList.slice(0, 4);
 
 
 export default function AffiliateLinks() {
-
   return (
     <div className="relative px-4 lg:px-12 w-full ">
       <div className='pb-12'>
@@ -21,7 +20,7 @@ export default function AffiliateLinks() {
             key={link.title}
             className="max-w-md px-2 pt-4 pb-12 flex flex-col gap-4 bg-white shadow-inner drop-shadow-xl lg:hover:transform lg:hover:rotate-3 lg:hover:scale-105"
           >
-            <Link href={`/${link.url}`}>
+            <Link href={link.url} target='_blank'>
               <Image
                 src={link.image}
                 alt={link.title}
