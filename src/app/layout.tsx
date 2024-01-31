@@ -7,7 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "sonner";
 import AffiliateLinks from "@/components/affiliate-links";
-import Script from "next/script";
+// import Script from "next/script";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,10 +17,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Brickbloom",
   description: "Generate Lego Inspired AI Art",
-  metadataBase: new URL("https://brickbloom.com"),
-  other: {
-    "google-adsense-account": "ca-pub-1553587147774243",
-  },
+  metadataBase: new URL("https://brickbloom.com")
 };
 
 export default function RootLayout({
@@ -31,9 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.variable}>
-        <Script async
+        {/* <Script async
             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1553587147774243"
-            crossOrigin="anonymous"/>
+            crossOrigin="anonymous"/> */}
         <Toaster />
         <div className="w-full">
           <div className="mx-5 flex h-16 max-w-screen-xl items-center justify-between xl:mx-auto">
@@ -57,28 +54,6 @@ export default function RootLayout({
         <div>
           <AffiliateLinks />
         </div>
-        {/* <div className="w-full max-w-6xl mx-auto border border-black flex justify-between">
-          {ads.map((link) => (
-            <div
-              className="relative border-2 border-red-600 cursor-pointer"
-              key={link.title}
-            >
-              <a href={link.url} target="_blank" rel="noreferrer" className='flex flex-col'>
-                <div className="w-64 h-64">
-                  <Image
-                    src={link.image}
-                    alt={link.title}
-                    width={256}
-                    height={256}
-                  />
-                </div>
-                <div className='p-4'>
-                  <p className="text-center">{link.title}</p>
-                </div>
-              </a>
-            </div>
-          ))}
-        </div> */}
         <footer className="w-full py-4 lg:py-12">
           <p className="text-center text-zinc-600">
             made by{" "}
