@@ -11,9 +11,9 @@ export default function HomeForm({
   return (
     <div className="z-10 w-full mx-auto max-w-xl px-2.5 xl:px-0 py-4 xl:py-8">
       <Form promptValue={prompt} />
-      <Suspense fallback={<CountDisplay />}>
+      {/* <Suspense fallback={<CountDisplay />}>
         <GeneratedCount />
-      </Suspense>
+      </Suspense> */}
     </div>
   );
 }
