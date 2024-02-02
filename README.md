@@ -1,5 +1,5 @@
 <a href="https://brickbloom.com">
-  <img alt="Brickbloom – Generate Lego inspired AI art with one click." src="/app/opengraph-image.png">
+  <img alt="Brickbloom – Generate Lego inspired AI art with one click." src="/src/app/opengraph-image.png">
   <h1 align="center">Brickbloom</h1>
 </a>
 
