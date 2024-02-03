@@ -12,9 +12,11 @@ const WEBHOOK_URL =
     ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/webhook`
     : `${process.env.NGROK_URL}/api/webhook`;
 
+
+
 export const nanoid = customAlphabet(
   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
-  7,
+  7
 );
 
 const replicate = new Replicate({
@@ -26,6 +28,7 @@ export async function generate(form: FormData) {
 
   const id = nanoid();
   console.log("id", id);
+  console.log("prompt", prompt);
 
   const res = await Promise.all([
     redis.hset(id, { prompt: prompt }),
