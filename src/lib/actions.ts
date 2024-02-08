@@ -10,7 +10,7 @@ const sdxlVersion =
 
 const WEBHOOK_URL =
   process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
-    ? "https://brickbloom.com/api/webhook"
+    ? `${process.env.NEXT_PUBLIC_SITE_URL}/api/webhook`
     : process.env.NEXT_PUBLIC_VERCEL_ENV === "preview"
     ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/webhook`
     : `${process.env.NGROK_URL}/api/webhook`;
