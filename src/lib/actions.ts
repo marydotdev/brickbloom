@@ -15,7 +15,7 @@ const sdxlVersion =
 //     ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/webhook`
 //     : `${process.env.NGROK_URL}/api/webhook`;
 
-const WEBHOOK_URL = `${process.env.NGROK_URL}/api/webhook`;
+const WEBHOOK_URL = `https://brickbloom.com/api/webhook`;
 
 export const nanoid = customAlphabet(
   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
