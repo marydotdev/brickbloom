@@ -42,7 +42,6 @@ export async function generate(form: FormData) {
         negative_prompt: "blurry, low quality, nsfw, unrealistic",
       },
       webhook: `${WEBHOOK_URL}?id=${id}`,
-      webhook_events_filter: ["completed"],
     }),
   ]);
 
