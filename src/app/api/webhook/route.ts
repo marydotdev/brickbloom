@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { put } from "@vercel/blob";
-import { Redis } from "@upstash/redis"
+import { Redis } from "@upstash/redis";
 
 const redis = Redis.fromEnv();
 
@@ -11,6 +11,7 @@ export async function POST(req: Request) {
   // get output from Replicate
   const body = await req.json();
   const { output } = body;
+  console.log("output", output);
 
   if (!output) {
     return new Response("Missing output", { status: 400 });
