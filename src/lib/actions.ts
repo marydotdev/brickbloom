@@ -8,12 +8,14 @@ const redis = Redis.fromEnv();
 const sdxlVersion =
   "9ddc2c9883e658f1317fd39b4d150ff79376cc8e63421a97ab5d0d5d757e1ab6";
 
-const WEBHOOK_URL =
-  process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
-    ? "https://brickbloom.com/api/webhook"
-    : process.env.NEXT_PUBLIC_VERCEL_ENV === "preview"
-    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/webhook`
-    : `${process.env.NGROK_URL}/api/webhook`;
+// const WEBHOOK_URL =
+//   process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
+//     ? "https://brickbloom.com/api/webhook"
+//     : process.env.NEXT_PUBLIC_VERCEL_ENV === "preview"
+//     ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/webhook`
+//     : `${process.env.NGROK_URL}/api/webhook`;
+
+const WEBHOOK_URL = `${process.env.NGROK_URL}/api/webhook`;
 
 export const nanoid = customAlphabet(
   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
