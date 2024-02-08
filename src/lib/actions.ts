@@ -6,7 +6,7 @@ import Replicate from "replicate";
 const redis = Redis.fromEnv();
 
 const sdxlVersion =
-  "65e6fd1fd6dd3e59f7c0b26a4237819ce8d29d4bdbfcba9bcf5ab1aa362a2eb2";
+  "9ddc2c9883e658f1317fd39b4d150ff79376cc8e63421a97ab5d0d5d757e1ab6";
 
 const WEBHOOK_URL =
   process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
@@ -38,7 +38,6 @@ export async function generate(form: FormData) {
       input: {
         prompt: `${prompt} in the style of TOK`,
         negative_prompt: "blurry, low quality, nsfw, unrealistic",
-        num_inference_steps: 10,
       },
       webhook: `${WEBHOOK_URL}?id=${id}`,
       webhook_events_filter: ["completed"],
