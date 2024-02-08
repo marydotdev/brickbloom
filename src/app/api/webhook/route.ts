@@ -43,6 +43,14 @@ export async function POST(req: Request) {
     const id = searchParams.get("id");
     console.log("Processing ID:", id);
 
+    if (process.env.REPLICATE_WEBHOOK_SECRET) {
+      // if a secret is set, verify it
+      const secret = searchParams.get("secret") as string;
+      if (secret !== process.env.REPLICATE_WEBHOOK_SECRET) {
+        return new Response("Invalid secret", { status: 401 });
+      }
+    }
+
     // Ensure ID is present
     if (!id) {
       console.error("ID is missing from the request URL.");
@@ -52,8 +60,6 @@ export async function POST(req: Request) {
     // Parse request body for output
     const body = await req.json();
     const { output } = body;
-
-    console.log(body)
 
     // Validate output
     if (!output || output.length === 0) {

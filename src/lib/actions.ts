@@ -2,18 +2,12 @@
 import { Redis } from "@upstash/redis";
 import { customAlphabet } from "nanoid";
 import Replicate from "replicate";
+import { WEBHOOK_URL } from "./constants";
 
 const redis = Redis.fromEnv();
 
 const sdxlVersion =
   "9ddc2c9883e658f1317fd39b4d150ff79376cc8e63421a97ab5d0d5d757e1ab6";
-
-const WEBHOOK_URL =
-  process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
-    ? `${process.env.NEXT_PUBLIC_SITE_URL}/api/webhook`
-    : process.env.NEXT_PUBLIC_VERCEL_ENV === "preview"
-    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/webhook`
-    : `${process.env.NGROK_URL}/api/webhook`;
 
 export const nanoid = customAlphabet(
   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
@@ -39,7 +33,12 @@ export async function generate(form: FormData) {
         prompt: `${prompt} in the style of TOK`,
         negative_prompt: "blurry, low quality, nsfw, unrealistic",
       },
-      webhook: `${WEBHOOK_URL}?id=${id}`,
+      webhook: `${WEBHOOK_URL}?id=${id}${
+        process.env.REPLICATE_WEBHOOK_SECRET
+          ? `&secret=${process.env.REPLICATE_WEBHOOK_SECRET}`
+          : ""
+      }`,
+      webhook_events_filter: ["completed"],
     }),
   ]);
 
