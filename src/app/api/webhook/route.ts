@@ -53,6 +53,8 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { output } = body;
 
+    console.log(body)
+
     // Validate output
     if (!output || output.length === 0) {
       console.error("Missing or empty output in the request body.");
