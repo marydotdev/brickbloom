@@ -30,15 +30,22 @@
 //   return NextResponse.json({ ok: true });
 // }
 
+// app/api/webhook/route.ts
+
 import { NextResponse } from "next/server";
 import { put } from "@vercel/blob";
 import { Redis } from "@upstash/redis";
 
 const redis = Redis.fromEnv();
 
+export async function GET(req: Request) {
+  console.log("GET request received:", req);
+  return new Response("OK", req);
+}
+
 export async function POST(req: Request) {
-  console.log("Processing webhook...", req);
-  console.log("Webhook Url:", req.url);
+  // console.log("Processing webhook...", req);
+  // console.log("Webhook Url:", req.url);
   try {
     const searchParams = new URL(req.url).searchParams;
     const id = searchParams.get("id");
