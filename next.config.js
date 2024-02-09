@@ -4,7 +4,7 @@ const nextConfig = {
     serverActions: {
       allowedOrigins: [
         "replicate.com",
-        "*.replicate.com",
+        "*.api.replicate.com",
         "api.replicate.com",
         "replicate.delivery",
       ],
