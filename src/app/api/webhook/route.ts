@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { put } from "@vercel/blob";
 import { Redis } from "@upstash/redis";
 
-export const runtime = "edge";
 
 const redis = Redis.fromEnv();
 
