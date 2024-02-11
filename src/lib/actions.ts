@@ -8,8 +8,11 @@ import { WEBHOOK_URL } from "./constants";
 
 const redis = Redis.fromEnv();
 
+// const sdxlVersion =
+//   "9ddc2c9883e658f1317fd39b4d150ff79376cc8e63421a97ab5d0d5d757e1ab6";
+
 const sdxlVersion =
-  "9ddc2c9883e658f1317fd39b4d150ff79376cc8e63421a97ab5d0d5d757e1ab6";
+  "3bcbe21f66f68d333dc449108a00da3c124882f806918408462dfad5006a0a70";
 
 export const nanoid = customAlphabet(
   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
