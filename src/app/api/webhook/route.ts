@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { put } from "@vercel/blob";
 import { Redis } from "@upstash/redis";
 
+export const maxDuration = 120;
 
 const redis = Redis.fromEnv();
 
