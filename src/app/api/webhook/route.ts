@@ -2,14 +2,9 @@ import { NextResponse } from "next/server";
 import { put } from "@vercel/blob";
 import { Redis } from "@upstash/redis";
 
-export const maxDuration = 120;
+export const maxDuration = 120; // This function can run for a maximum of 5 seconds
 
 const redis = Redis.fromEnv();
-
-export async function GET(req: Request) {
-  console.log("GET request received:", req);
-  return new Response("OK", req);
-}
 
 export async function POST(req: Request) {
   const searchParams = new URL(req.url).searchParams;
