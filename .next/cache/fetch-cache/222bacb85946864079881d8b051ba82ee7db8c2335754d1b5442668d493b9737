@@ -1,0 +1,1 @@
+{"kind":"FETCH","data":{"headers":{"access-control-allow-credentials":"true","content-length":"46","content-type":"application/json; charset=utf-8","date":"Thu, 07 Dec 2023 01:53:29 GMT"},"body":"eyJyZXN1bHQiOlsiY0hKdmJYQjAiLCJZU0JzWldkdklIUnpkVzVoYldrPSJdfQ==","status":200,"url":"https://frank-mustang-48464.kv.vercel-storage.com/"},"revalidate":31536000,"tags":[]}
