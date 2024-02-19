@@ -108,7 +108,7 @@ export default function LoadingImage() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
-    }, 3000); // Change image every 3 seconds
+    }, 5000); // Change image every 3 seconds
 
     // Clean up the interval on component unmount
     return () => clearInterval(interval);
@@ -127,7 +127,7 @@ export default function LoadingImage() {
           src={`/gallery/${currentItem.key}.png`}
           width={480}
           height={480}
-          className="h-full object-cover"
+          className="h-full object-cover transition-all duration-300 ease-in-out"
         />
         <p className="font-caveat font-bold text-center uppercase truncate">
           {currentItem.description}

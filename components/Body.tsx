@@ -22,7 +22,83 @@ import { getUserId } from "@/lib/utils";
 
 import { useRouter } from "next/navigation";
 import Counter from './Counter';
+import ImageCarousel from './ImageCarousel';
 
+  // const exampleImages = [
+  //   '0hHdwLH',
+  //   '2NKuGRl',
+  //   '3lEdhRl',
+  //   'Edski1u',
+  //   'IhpM99Y',
+  //   'LUmcEyM',
+  //   'O6ctATM',
+  //   'SwHDM0s',
+  //   'T9NyCGp',
+  //   'X93VfEI',
+  //   'XxsAoIM',
+  //   'obV2izq',
+  //   'qJxE8uM',
+  //   'sy5h2qX',
+  // ];
+
+  const exampleImages = [
+    {
+      key: "0hHdwLH",
+      description: "a lego taylor swift sculpture",
+    },
+    {
+      key: "2NKuGRl",
+      description: "a lego fruit basket",
+    },
+    {
+      key: "3lEdhRl",
+      description: "a lego pizza",
+    },
+    {
+      key: "Edski1u",
+      description: "a lego taxi",
+    },
+    {
+      key: "IhpM99Y",
+      description: "a lego christmas tree",
+    },
+    {
+      key: "LUmcEyM",
+      description: "lego winter wonderland",
+    },
+    {
+      key: "O6ctATM",
+      description: "a lego horse",
+    },
+    {
+      key: "SwHDM0s",
+      description: "a lego coral reef",
+    },
+    {
+      key: "T9NyCGp",
+      description: "a lego Polaroid photo",
+    },
+    {
+      key: "X93VfEI",
+      description: "a lego portrait of the mona lisa",
+    },
+    {
+      key: "XxsAoIM",
+      description: "A lego anatomical heart",
+    },
+    {
+      key: "obV2izq",
+      description: "a lego swamp monster",
+    },
+    {
+      key: "qJxE8uM",
+      description: "a lego steampunk airship",
+    },
+    {
+      key: "sy5h2qX",
+      description: "a lego elf",
+    },
+  ];
 
 const generateFormSchema = z.object({
   prompt: z.string().min(3).max(160),
@@ -202,7 +278,7 @@ const Body = ({
                   <div role="status">
                     <svg
                       aria-hidden="true"
-                      className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                      className="w-5 h-5 text-gray-200 animate-spin dark:text-gray-600 fill-blue-300"
                       viewBox="0 0 100 101"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -221,7 +297,9 @@ const Body = ({
                   <Counter />
                 </div>
               ) : response ? (
-                <div className='w-full flex justify-end'>{(response.model_latency_ms / 1000).toFixed(2)}</div>
+                <div className="w-full flex justify-end">
+                  {(response.model_latency_ms / 1000).toFixed(2)}
+                </div>
               ) : (
                 " "
               )}
@@ -236,24 +314,35 @@ const Body = ({
           </div>
         </div>
         <div className="col-span-1 flex flex-col h-full justify-end border-2 border-blue-200">
-          <>
+          <div>
             <div>
-              <div className="flex flex-col justify-center relative h-auto items-center">
-                {response ? (
-                  <ImageCard
-                    imageURL={response.image_url}
-                    prompt={form.getValues("prompt")}
-                    time={(response.model_latency_ms / 1000).toFixed(0)}
-                  />
-                ) : (
-                  <LoadingImage
-                    imageURL={fallbackImage}
-                    prompt={fallbackPrompt}
-                    time={"secs"}
-                  />
-                )}
-              </div>
-              {/* {response && (
+              {response ? (
+                <div className="flex flex-col justify-center relative h-auto items-center">
+                  <div className='p-4'>
+                    <ImageCard
+                      imageURL={response.image_url}
+                      prompt={form.getValues("prompt")}
+                      time={(response.model_latency_ms / 1000).toFixed(0)}
+                    />
+                  </div>
+                </div>
+              ) : (
+                // <LoadingImage
+                //   imageURL={fallbackImage}
+                //   prompt={fallbackPrompt}
+                //   time={"secs"}
+                // />
+                // <ImageCard
+                //   imageURL={fallbackImage}
+                //   prompt={fallbackPrompt}
+                //   time={'0'}
+                // />
+                <div className="relative max-w-md mx-auto">
+                  <ImageCarousel images={exampleImages} />
+                </div>
+              )}
+            </div>
+            {/* {response && (
                 <div className="flex justify-center gap-5 mt-4">
                   <Button
                   // onClick={() =>
@@ -275,8 +364,7 @@ const Body = ({
                   </Button>
                 </div>
               )} */}
-            </div>
-          </>
+          </div>
         </div>
       </div>
     </div>

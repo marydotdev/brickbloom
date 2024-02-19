@@ -2,8 +2,7 @@
 import "./globals.css";
 import { Inter as FontSans, Caveat } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
-import { getUserId } from '@/lib/utils';
+import UserId from "@/components/UserId";
 
 type RootLayoutProps = {
   children: React.ReactNode;
@@ -18,13 +17,6 @@ export const caveat = Caveat({
   subsets: ["latin"],
 });
 export default function RootLayout({ children }: RootLayoutProps) {
-  const [userId, setUserId] = useState<string | null>(null);
-
-  useEffect(() => {
-    const userId = getUserId();
-    console.log(`User ID: ${userId}`);
-    setUserId(userId);
-  }, []);
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -41,9 +33,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <a href="/">brickbloom</a>
             </h1>
             <p className="text-lg">Generate Lego inspired AI images</p>
-            <p>
-              <a href={`/gallery/${userId}`}>{userId}</a>
-            </p>
+            <div className='h-6'>
+              {/* <a href={`/gallery/${userId}`}>{userId}</a> */}
+              <UserId />
+            </div>
           </div>
         </div>
         <main className="flex min-h-full flex-col">{children}</main>
