@@ -6,6 +6,15 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export const getUserId = (): string => {
+  let userId = localStorage.getItem("userId");
+  if (!userId) {
+    userId = nanoid();
+    localStorage.setItem("userId", userId);
+  }
+  return userId;
+};
+
 export const nanoid = customAlphabet(
   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
   7

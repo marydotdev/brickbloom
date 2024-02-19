@@ -20,7 +20,7 @@ export const ImageCard: React.FC<ImageCardProps> = ({
   }
 
   return (
-    <div className="max-w-md px-2 pt-4 pb-12 flex flex-col  bg-white shadow-inner drop-shadow-xl">
+    <div className="max-w-md px-4 pt-4 pb-8 flex flex-col bg-white shadow-inner drop-shadow-xl">
       <Image
         alt={prompt}
         src={imageURL}
@@ -28,12 +28,10 @@ export const ImageCard: React.FC<ImageCardProps> = ({
         height={480}
         className="h-full object-cover"
       />
-      <p className="font-caveat font-bold text-center pt-4 uppercase ">
-        {prompt}
-      </p>
-      <p className="font-caveat font-bold text-center pt-4 uppercase ">
-        {time}
-      </p>
+      <div className='flex flex-col gap-4 pt-4'>
+        <p className='text-center text-lg'>{prompt}</p>
+        {/* <p className='text-center text-lg'>{time}</p> */}
+      </div>
     </div>
   );
 };
