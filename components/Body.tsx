@@ -18,12 +18,10 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import {ImageCard} from "@/components/ImageCard";
 import { ImageSkeleton} from "@/components/ImageSkeleton";
 import LoadingDots from "@/components/ui/loading-dots";
-import LoadingImage from "@/components/LoadingImage";
 import { getPlaceholderPrompt } from "@/lib/utils";
 import { getUserId } from "@/lib/utils";
 
 import { useRouter } from "next/navigation";
-import Counter from './Counter';
 import ImageCarousel from './ImageCarousel';
 
   // const exampleImages = [
@@ -130,9 +128,6 @@ const Body = ({
   const [placeholderPrompt, setPlaceholderPrompt] = useState("");
   const [lastPrompt, setLastPrompt] = useState(""); // Step 1: Add state to store the last prompt
 
-  //   const fallbackImage = `https://rslyfbnpbdbystdg.public.blob.vercel-storage.com/x4hgLgn-sTF9Zv0dXecTI6cOdQwgU3pH1dtoOO.png
-  // `;
-  //   const fallbackPrompt = "A lego dog"
   useEffect(() => {
     if (promptValue) {
       setPlaceholderPrompt("");

@@ -75,6 +75,7 @@ export async function POST(request: NextRequest) {
     image_url: url,
     model_latency_ms: Math.round(durationMS),
     id: id,
+    prompt: reqBody.prompt,
   };
 
   return new Response(JSON.stringify(response), {
