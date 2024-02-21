@@ -20,7 +20,7 @@ export default function ImageCarousel({ images }: { images: { key:string; descri
     //   }),
     // ]}
     >
-      <CarouselPrevious />
+      {/* <CarouselPrevious /> */}
       <CarouselContent>
         {images.map((image, index) => (
           <CarouselItem key={index}>
@@ -45,7 +45,7 @@ export default function ImageCarousel({ images }: { images: { key:string; descri
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselNext />
+      {/* <CarouselNext /> */}
     </Carousel>
   );
 }

@@ -16,13 +16,12 @@ import { useCallback, useEffect, useState } from "react";
 import { GenerateRequest, GenerateResponse } from "@/lib/types";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { ImageCard } from "@/components/ImageCard";
-import { ImageSkeleton } from "@/components/ImageSkeleton";
+import  ImageCarousel  from "@/components/ImageCarousel";
 import LoadingDots from "@/components/ui/loading-dots";
 import { getPlaceholderPrompt } from "@/lib/utils";
 import { getUserId } from "@/lib/utils";
-
 import { useRouter } from "next/navigation";
-import ImageCarousel from "./ImageCarousel";
+import { Container } from "@/components/Container";
 
 // const exampleImages = [
 //   '0hHdwLH',
@@ -215,14 +214,14 @@ const Body = ({
   );
 
   return (
-    <div className="flex justify-center items-center flex-col w-full p-4 pb-12">
-      <div className="max-w-screen-xl w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 mt-4">
-        <div className="col-span-1 flex flex-col h-full justify-start gap-12 pt-12 border-2 border-blue-200">
+    <Container>
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 mt-2 md:mt-4">
+        <div className="col-span-1 flex flex-col h-full justify-start gap-4 md:gap-12 pt-4 md:pt-12">
           <div className="w-full max-w-md mx-auto">
-            <h1 className="text-3xl font-bold mb-4">
+            <h1 className="text-xl md:text-3xl font-bold mb-2 md:mb-4">
               Generate Lego inspired AI images
             </h1>
-            <p className="text-lg">Try it now, completely free</p>
+            <p className="text-lg md:text-xl">Try it now, completely free</p>
           </div>
           <div className="w-full max-w-md mx-auto">
             <Form {...form}>
@@ -254,7 +253,7 @@ const Body = ({
                       {isLoading ? (
                         <LoadingDots style="large" color="#fff" />
                       ) : response ? (
-                        "Regenerate"
+                        "Generate"
                       ) : (
                         "Generate"
                       )}
@@ -281,7 +280,7 @@ const Body = ({
             </Form>
           </div>
           <div className="w-full max-w-md mx-auto">
-            <div className="pt-8">
+            {/* <div className="pt-4 md:pt-8">
               {isLoading ? (
                 <div className="w-full flex justify-between items-center">
                   <div role="status">
@@ -311,7 +310,7 @@ const Body = ({
               ) : (
                 " "
               )}
-            </div>
+            </div> */}
             {error && (
               <Alert variant="destructive">
                 <div className="h-4 w-4 rounded-full" />
@@ -321,7 +320,7 @@ const Body = ({
             )}
           </div>
         </div>
-        <div className="col-span-1 flex flex-col h-full justify-end border-2 border-blue-200">
+        <div className="col-span-1 flex flex-col h-full justify-end">
           <div>
             {/* <div>
               {response ? (
@@ -389,7 +388,7 @@ const Body = ({
           </div>
         </div>
       </div>
-    </div>
+    </Container>
   );
 };
 

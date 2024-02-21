@@ -13,7 +13,9 @@ const UserId = () => {
   }, []);
 
   return (
-    <a href={`/gallery/${userId}`}>{userId}</a>
+    <div className=''>
+      <a href={`/gallery/${userId}`}>gallery</a>
+    </div>
   );
 };
 
