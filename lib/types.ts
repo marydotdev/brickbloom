@@ -33,6 +33,11 @@ export interface GenerateResponse {
   image_url: string;
 
   /**
+   * Prompt that was used to generate the image.
+   */
+  prompt: string;
+
+  /**
    * Response latency in milliseconds.
    */
   model_latency_ms: number;

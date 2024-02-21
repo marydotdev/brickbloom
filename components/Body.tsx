@@ -159,6 +159,7 @@ const Body = ({
         image_url: imageUrl,
         model_latency_ms: modelLatency,
         id: id,
+        prompt: prompt,
       });
       setSubmittedURL(redirectUrl);
 
@@ -335,7 +336,7 @@ const Body = ({
                   <div className="p-4">
                     <ImageCard
                       imageURL={response.image_url}
-                      prompt={form.getValues("prompt")}
+                      prompt={response.prompt}
                       time={(response.model_latency_ms / 1000).toFixed(0)}
                     />
                   </div>
