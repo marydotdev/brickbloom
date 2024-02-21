@@ -353,7 +353,7 @@ const Body = ({
                     <ImageCard
                       imageURL={response.image_url}
                       prompt={response.prompt}
-                      time={(response.model_latency_ms / 1000).toFixed(0)}
+                      id={response.id}
                     />
                   </div>
                 </div>
