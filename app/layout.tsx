@@ -1,6 +1,6 @@
 "use client"
 import "./globals.css";
-import { Inter as FontSans, Caveat } from "next/font/google";
+import { Inter, Caveat } from "next/font/google";
 import { cn } from "@/lib/utils";
 import UserId from "@/components/UserId";
 
@@ -8,9 +8,9 @@ type RootLayoutProps = {
   children: React.ReactNode;
 };
 
-export const fontSans = FontSans({
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  variable: "--font-sans",
 });
 export const caveat = Caveat({
   variable: "--font-caveat",
@@ -22,12 +22,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body
         className={cn(
-          "min-h-screen font-sans antialiased",
-          fontSans.variable,
+          "min-h-screen antialiased",
+          inter.variable,
           caveat.variable
         )}
       >
-        <div className="max-w-md mx-auto">
+        <div className="pt-8 max-w-md mx-auto">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">
               <a href="/">brickbloom</a>

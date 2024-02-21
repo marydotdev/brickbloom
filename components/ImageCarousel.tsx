@@ -2,8 +2,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
@@ -24,7 +22,7 @@ export default function ImageCarousel({ images }: { images: { key:string; descri
         {images.map((image, index) => (
           <CarouselItem key={index}>
             <div className="p-4">
-              <div className="max-w-md px-4 pt-4 pb-8 flex flex-col bg-white shadow-inner drop-shadow-xl">
+              <div className="max-w-md mx-auto px-4 pt-4 pb-8 flex flex-col bg-white shadow-inner drop-shadow-xl">
                 <Image
                   alt="Generated image"
                   src={`/gallery/${image.key}.png`}

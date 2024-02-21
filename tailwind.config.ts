@@ -20,6 +20,7 @@ const config = {
     extend: {
       fontFamily: {
         caveat: ["var(--font-caveat)", "cursive"],
+        inter: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {

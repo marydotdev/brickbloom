@@ -16,6 +16,8 @@ import { useCallback, useEffect, useState } from "react";
 import { GenerateRequest, GenerateResponse } from "@/lib/types";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import {ImageCard} from "@/components/ImageCard";
+import { ImageSkeleton} from "@/components/ImageSkeleton";
+import LoadingDots from "@/components/ui/loading-dots";
 import LoadingImage from "@/components/LoadingImage";
 import { getPlaceholderPrompt } from "@/lib/utils";
 import { getUserId } from "@/lib/utils";
@@ -126,9 +128,11 @@ const Body = ({
   const [response, setResponse] = useState<GenerateResponse | null>(null);
   const [submittedURL, setSubmittedURL] = useState<string | null>(null);
   const [placeholderPrompt, setPlaceholderPrompt] = useState("");
-  const fallbackImage = `https://rslyfbnpbdbystdg.public.blob.vercel-storage.com/x4hgLgn-sTF9Zv0dXecTI6cOdQwgU3pH1dtoOO.png
-`;
-  const fallbackPrompt = "A lego dog"
+  const [lastPrompt, setLastPrompt] = useState(""); // Step 1: Add state to store the last prompt
+
+  //   const fallbackImage = `https://rslyfbnpbdbystdg.public.blob.vercel-storage.com/x4hgLgn-sTF9Zv0dXecTI6cOdQwgU3pH1dtoOO.png
+  // `;
+  //   const fallbackPrompt = "A lego dog"
   useEffect(() => {
     if (promptValue) {
       setPlaceholderPrompt("");
@@ -166,6 +170,7 @@ const Body = ({
     async (values: GenerateFormValues) => {
       setIsLoading(true);
       setResponse(null);
+      setLastPrompt(values.prompt); // Step 2: Store the last prompt in state
 
       try {
         const request: GenerateRequest = {
@@ -245,20 +250,30 @@ const Body = ({
                       </FormItem>
                     )}
                   />
-                  <Button
-                    type="submit"
-                    disabled={isLoading}
-                    className="inline-flex justify-center
+                  <div className="w-full flex justify-between">
+                    <Button
+                      type="submit"
+                      disabled={isLoading}
+                      className="inline-flex justify-center
                  max-w-[200px] w-full"
-                  >
-                    {isLoading ? (
-                      <p>loading ...</p>
-                    ) : response ? (
-                      "✨ Regenerate"
-                    ) : (
-                      "Generate"
-                    )}
-                  </Button>
+                    >
+                      {isLoading ? (
+                        <LoadingDots style="large" color="#fff" />
+                      ) : response ? (
+                        "Regenerate"
+                      ) : (
+                        "Generate"
+                      )}
+                    </Button>
+                    <Button
+                      type="submit"
+                      onClick={() => form.reset()}
+                      className="inline-flex justify-center
+                 max-w-[200px] w-full"
+                    >
+                      Clear
+                    </Button>
+                  </div>
 
                   {/* {error && (
                     <Alert variant="destructive">
@@ -294,7 +309,6 @@ const Body = ({
                     </svg>
                     <span className="sr-only">Loading...</span>
                   </div>
-                  <Counter />
                 </div>
               ) : response ? (
                 <div className="w-full flex justify-end">
@@ -318,7 +332,7 @@ const Body = ({
             <div>
               {response ? (
                 <div className="flex flex-col justify-center relative h-auto items-center">
-                  <div className='p-4'>
+                  <div className="p-4">
                     <ImageCard
                       imageURL={response.image_url}
                       prompt={form.getValues("prompt")}
@@ -326,21 +340,18 @@ const Body = ({
                     />
                   </div>
                 </div>
+              ) :
+              isLoading ? (
+                <ImageSkeleton />
               ) : (
-                // <LoadingImage
-                //   imageURL={fallbackImage}
-                //   prompt={fallbackPrompt}
-                //   time={"secs"}
-                // />
-                // <ImageCard
-                //   imageURL={fallbackImage}
-                //   prompt={fallbackPrompt}
-                //   time={'0'}
-                // />
-                <div className="relative max-w-md mx-auto">
+                !submittedURL && (
                   <ImageCarousel images={exampleImages} />
-                </div>
+                )
               )}
+              {/* // :
+              // (
+              //   <ImageCarousel images={exampleImages} />
+              // )} */}
             </div>
             {/* {response && (
                 <div className="flex justify-center gap-5 mt-4">
