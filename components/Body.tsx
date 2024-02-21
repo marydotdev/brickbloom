@@ -15,90 +15,90 @@ import { Button } from "@/components/ui/button";
 import { useCallback, useEffect, useState } from "react";
 import { GenerateRequest, GenerateResponse } from "@/lib/types";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import {ImageCard} from "@/components/ImageCard";
-import { ImageSkeleton} from "@/components/ImageSkeleton";
+import { ImageCard } from "@/components/ImageCard";
+import { ImageSkeleton } from "@/components/ImageSkeleton";
 import LoadingDots from "@/components/ui/loading-dots";
 import { getPlaceholderPrompt } from "@/lib/utils";
 import { getUserId } from "@/lib/utils";
 
 import { useRouter } from "next/navigation";
-import ImageCarousel from './ImageCarousel';
+import ImageCarousel from "./ImageCarousel";
 
-  // const exampleImages = [
-  //   '0hHdwLH',
-  //   '2NKuGRl',
-  //   '3lEdhRl',
-  //   'Edski1u',
-  //   'IhpM99Y',
-  //   'LUmcEyM',
-  //   'O6ctATM',
-  //   'SwHDM0s',
-  //   'T9NyCGp',
-  //   'X93VfEI',
-  //   'XxsAoIM',
-  //   'obV2izq',
-  //   'qJxE8uM',
-  //   'sy5h2qX',
-  // ];
+// const exampleImages = [
+//   '0hHdwLH',
+//   '2NKuGRl',
+//   '3lEdhRl',
+//   'Edski1u',
+//   'IhpM99Y',
+//   'LUmcEyM',
+//   'O6ctATM',
+//   'SwHDM0s',
+//   'T9NyCGp',
+//   'X93VfEI',
+//   'XxsAoIM',
+//   'obV2izq',
+//   'qJxE8uM',
+//   'sy5h2qX',
+// ];
 
-  const exampleImages = [
-    {
-      key: "0hHdwLH",
-      description: "a lego taylor swift sculpture",
-    },
-    {
-      key: "2NKuGRl",
-      description: "a lego fruit basket",
-    },
-    {
-      key: "3lEdhRl",
-      description: "a lego pizza",
-    },
-    {
-      key: "Edski1u",
-      description: "a lego taxi",
-    },
-    {
-      key: "IhpM99Y",
-      description: "a lego christmas tree",
-    },
-    {
-      key: "LUmcEyM",
-      description: "lego winter wonderland",
-    },
-    {
-      key: "O6ctATM",
-      description: "a lego horse",
-    },
-    {
-      key: "SwHDM0s",
-      description: "a lego coral reef",
-    },
-    {
-      key: "T9NyCGp",
-      description: "a lego Polaroid photo",
-    },
-    {
-      key: "X93VfEI",
-      description: "a lego portrait of the mona lisa",
-    },
-    {
-      key: "XxsAoIM",
-      description: "A lego anatomical heart",
-    },
-    {
-      key: "obV2izq",
-      description: "a lego swamp monster",
-    },
-    {
-      key: "qJxE8uM",
-      description: "a lego steampunk airship",
-    },
-    {
-      key: "sy5h2qX",
-      description: "a lego elf",
-    },
-  ];
+const exampleImages = [
+  {
+    key: "0hHdwLH",
+    description: "a lego taylor swift sculpture",
+  },
+  {
+    key: "2NKuGRl",
+    description: "a lego fruit basket",
+  },
+  {
+    key: "3lEdhRl",
+    description: "a lego pizza",
+  },
+  {
+    key: "Edski1u",
+    description: "a lego taxi",
+  },
+  {
+    key: "IhpM99Y",
+    description: "a lego christmas tree",
+  },
+  {
+    key: "LUmcEyM",
+    description: "lego winter wonderland",
+  },
+  {
+    key: "O6ctATM",
+    description: "a lego horse",
+  },
+  {
+    key: "SwHDM0s",
+    description: "a lego coral reef",
+  },
+  {
+    key: "T9NyCGp",
+    description: "a lego Polaroid photo",
+  },
+  {
+    key: "X93VfEI",
+    description: "a lego portrait of the mona lisa",
+  },
+  {
+    key: "XxsAoIM",
+    description: "A lego anatomical heart",
+  },
+  {
+    key: "obV2izq",
+    description: "a lego swamp monster",
+  },
+  {
+    key: "qJxE8uM",
+    description: "a lego steampunk airship",
+  },
+  {
+    key: "sy5h2qX",
+    description: "a lego elf",
+  },
+];
 
 const generateFormSchema = z.object({
   prompt: z.string().min(3).max(160),
@@ -126,7 +126,6 @@ const Body = ({
   const [response, setResponse] = useState<GenerateResponse | null>(null);
   const [submittedURL, setSubmittedURL] = useState<string | null>(null);
   const [placeholderPrompt, setPlaceholderPrompt] = useState("");
-  const [lastPrompt, setLastPrompt] = useState(""); // Step 1: Add state to store the last prompt
 
   useEffect(() => {
     if (promptValue) {
@@ -166,7 +165,6 @@ const Body = ({
     async (values: GenerateFormValues) => {
       setIsLoading(true);
       setResponse(null);
-      setLastPrompt(values.prompt); // Step 2: Store the last prompt in state
 
       try {
         const request: GenerateRequest = {
@@ -261,14 +259,14 @@ const Body = ({
                         "Generate"
                       )}
                     </Button>
-                    <Button
+                    {/* <Button
                       type="submit"
                       onClick={() => form.reset()}
                       className="inline-flex justify-center
                  max-w-[200px] w-full"
                     >
                       Clear
-                    </Button>
+                    </Button> */}
                   </div>
 
                   {/* {error && (
@@ -325,6 +323,30 @@ const Body = ({
         </div>
         <div className="col-span-1 flex flex-col h-full justify-end border-2 border-blue-200">
           <div>
+            {/* <div>
+              {response ? (
+                <div className="flex flex-col justify-center relative h-auto items-center">
+                  <div className="p-4">
+                    <ImageCard
+                      imageURL={response.image_url}
+                      prompt={response.prompt}
+                      time={(response.model_latency_ms / 1000).toFixed(0)}
+                    />
+                  </div>
+                </div>
+              ) : isLoading ? (
+                <div className="p-4">
+                  <ImageSkeleton />
+                </div>
+              ) : (
+                !submittedURL &&
+                !response && (
+                  <div className='max-w-md mx-auto'>
+                    <ImageCarousel images={exampleImages} />
+                  </div>
+                )
+              )}
+            </div> */}
             <div>
               {response ? (
                 <div className="flex flex-col justify-center relative h-auto items-center">
@@ -336,18 +358,11 @@ const Body = ({
                     />
                   </div>
                 </div>
-              ) :
-              isLoading ? (
-                <ImageSkeleton />
               ) : (
-                !submittedURL && (
+                <div className="max-w-lg mx-auto">
                   <ImageCarousel images={exampleImages} />
-                )
+                </div>
               )}
-              {/* // :
-              // (
-              //   <ImageCarousel images={exampleImages} />
-              // )} */}
             </div>
             {/* {response && (
                 <div className="flex justify-center gap-5 mt-4">

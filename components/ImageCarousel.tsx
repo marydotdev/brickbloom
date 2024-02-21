@@ -2,6 +2,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
@@ -10,18 +12,21 @@ import Image from "next/image";
 export default function ImageCarousel({ images }: { images: { key:string; description:string;}[] }) {
   return (
     <Carousel
-      plugins={[
-        Autoplay({
-          delay: 5000,
-          stopOnInteraction: false,
-        }),
-      ]}
+    // plugins={[
+    //   Autoplay({
+    //     delay: 4000,
+    //     stopOnInteraction: false,
+    //     loop: true,
+    //   }),
+    // ]}
     >
-      {/* <CarouselPrevious /> */}
+      <CarouselPrevious />
       <CarouselContent>
         {images.map((image, index) => (
           <CarouselItem key={index}>
-            <div className="p-4">
+            <div
+              className="p-4"
+            >
               <div className="max-w-md mx-auto px-4 pt-4 pb-8 flex flex-col bg-white shadow-inner drop-shadow-xl">
                 <Image
                   alt="Generated image"
@@ -40,7 +45,7 @@ export default function ImageCarousel({ images }: { images: { key:string; descri
           </CarouselItem>
         ))}
       </CarouselContent>
-      {/* <CarouselNext /> */}
+      <CarouselNext />
     </Carousel>
   );
 }

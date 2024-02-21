@@ -7,6 +7,7 @@ import { ImageCard } from "@/components/ImageCard";
 type Image = {
   image_url: string;
   prompt: string;
+  id: string;
 };
 
 const Gallery = () => {
@@ -15,7 +16,8 @@ const Gallery = () => {
   useEffect(() => {
     const userId = getUserId(); // Retrieve the userId
     const savedImages = JSON.parse(localStorage.getItem(userId) || "[]");
-    setImages(savedImages);
+    const reversedImages = savedImages.reverse();
+    setImages(reversedImages);
     console.log(savedImages)
   }, []);
 
@@ -26,7 +28,9 @@ const Gallery = () => {
           key={index}
           className="max-w-md px-2 py-4 flex flex-col gap-4 bg-white lg:hover:transform  lg:hover:scale-105 transition-all duration-100 ease-in-out"
         >
+          <a href={`/${image.id}`}>
           <ImageCard imageURL={image.image_url} prompt={image.prompt} time={"0"} />
+          </a>
         </div>
       ))}
     </div>

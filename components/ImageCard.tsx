@@ -28,8 +28,8 @@ export const ImageCard: React.FC<ImageCardProps> = ({
         height={480}
         className="h-full object-cover"
       />
-      <div className='flex flex-col gap-4 pt-4'>
-        <p className='text-center text-lg'>{prompt}</p>
+      <div className="flex flex-col gap-4 pt-4">
+        <p className="text-center text-lg">{prompt}</p>
         {/* <p className='text-center text-lg'>{time}</p> */}
       </div>
     </div>
