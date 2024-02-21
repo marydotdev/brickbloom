@@ -1,8 +1,5 @@
 export type ReplicateRequest = {
   prompt: string;
-  qr_conditioning_scale?: number;
-  num_inference_steps?: number;
-  guidance_scale?: number;
   negative_prompt?: string;
 };
 
@@ -14,16 +11,7 @@ export interface GenerateRequest {
    */
   prompt: string;
 
-  /**
-   * Conditioning scale for qr controlnet
-   */
-  qr_conditioning_scale?: number;
 
-  /**
-   * Steps to run denoising
-   */
-
-  num_inference_steps?: number;
 }
 
 export interface GenerateResponse {
