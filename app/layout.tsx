@@ -12,7 +12,7 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
-export const caveat = Caveat({
+const caveat = Caveat({
   variable: "--font-caveat",
   subsets: ["latin"],
 });
