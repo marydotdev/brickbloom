@@ -52,7 +52,7 @@ export const ImageCard: React.FC<ImageCardProps> = ({
           size="icon"
           onClick={() => {
             navigator.clipboard.writeText(
-              `https://brickblooom.com/${id || ""}`
+              `https://brickbloom.com/${id || ""}`
             );
             console.log("Link copied to clipboard");
           }}
