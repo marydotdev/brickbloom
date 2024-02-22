@@ -40,6 +40,15 @@ const Gallery = () => {
     setImages(updatedImages); // Update state to re-render the component
   };
 
+  if (images.length === 0) {
+    // Optionally, render a message indicating there are no images
+    return (
+      <div className="relative max-w-screen-2xl mx-auto w-full justify-items-center px-4 py-12">
+        <p className='text-center text-3xl font-bold'>No images yet.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="relative max-w-screen-2xl mx-auto w-full justify-items-center px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
       {images.map((image, index) => (
