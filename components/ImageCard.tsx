@@ -33,7 +33,7 @@ export const ImageCard: React.FC<ImageCardProps> = ({
           className="h-full object-cover"
         />
         <div className="flex flex-col gap-4 pt-6">
-          <p className="text-center text-lg h-12">{prompt}</p>
+          <p className="text-center text-lg h-12 balanced overflow-clip leading-snug">{prompt}</p>
           {/* <p className='text-center text-lg'>{time}</p> */}
         </div>
       </div>

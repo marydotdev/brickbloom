@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.balanced {
+  max-inline-size: 50ch;
+  text-wrap: balance;
+}

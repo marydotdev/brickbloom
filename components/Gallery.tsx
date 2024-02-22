@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import { getUserId } from "@/lib/utils";
@@ -30,8 +30,15 @@ const Gallery = () => {
     const savedImages = JSON.parse(localStorage.getItem(userId) || "[]");
     const reversedImages = savedImages.reverse();
     setImages(reversedImages);
-    console.log(savedImages)
+    console.log(savedImages);
   }, []);
+
+  const deleteImage = (id: string) => {
+    const userId = getUserId(); // Retrieve the userId again
+    const updatedImages = images.filter((image) => image.id !== id); // Remove the image from the array
+    localStorage.setItem(userId, JSON.stringify(updatedImages)); // Update local storage with the new array
+    setImages(updatedImages); // Update state to re-render the component
+  };
 
   return (
     <div className="relative max-w-screen-2xl mx-auto w-full justify-items-center px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
@@ -47,7 +54,7 @@ const Gallery = () => {
               id={image.id}
             />
           </a>
-          <div className='absolute bottom-4'>
+          <div className="absolute bottom-4">
             <Dialog>
               <DialogTrigger asChild>
                 <Button variant="ghost" size={"icon"}>
@@ -58,7 +65,7 @@ const Gallery = () => {
               <DialogContent className="sm:max-w-md">
                 <DialogHeader>
                   <DialogTitle>Are you sure?</DialogTitle>
-                  <DialogDescription className='pt-2'>
+                  <DialogDescription className="pt-2">
                     This action cannot be undone. Are you sure you want to
                     delete this image forever?
                   </DialogDescription>
@@ -66,7 +73,11 @@ const Gallery = () => {
                 <DialogFooter className="">
                   <DialogClose asChild>
                     <div className="flex gap-2">
-                      <Button type="button" variant="destructive">
+                      <Button
+                        type="button"
+                        variant="destructive"
+                        onClick={() => deleteImage(image.id)}
+                      >
                         Delete
                       </Button>
                       <Button type="button" variant="outline">
