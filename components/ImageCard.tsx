@@ -23,43 +23,45 @@ export const ImageCard: React.FC<ImageCardProps> = ({
   }
 
   return (
-    <div className="relative max-w-md px-4 pt-4 pb-2 flex flex-col bg-white shadow-inner drop-shadow-xl">
-      <Image
-        alt={prompt}
-        src={imageURL}
-        width={480}
-        height={480}
-        className="h-full object-cover"
-      />
-      <div className="flex flex-col gap-4 pt-6">
-        <p className="text-center text-lg">{prompt}</p>
-        {/* <p className='text-center text-lg'>{time}</p> */}
-        <div className="w-full flex justify-between">
-          <Button
-            variant={"ghost"}
-            size="icon"
-            onClick={() => downloadImage(imageURL, prompt)}
-            className="bg-white/80"
-          >
-            <Download className="h-4 w-4" />
-            <span className="sr-only">Download image</span>
-          </Button>
-          <Button
-            variant={"ghost"}
-            size="icon"
-            onClick={() => {
-              navigator.clipboard.writeText(
-                `https://brickblooom.com/${id || ""}`
-              );
-              console.log("Link copied to clipboard");
-            }}
-            className="bg-white/80"
-          >
-            <Copy className="h-4 w-4" />
-            <span className="sr-only">Copy image link</span>
-          </Button>
+    <>
+      <div className="relative max-w-md px-4 pt-4 pb-8 flex flex-col bg-white shadow-inner drop-shadow-xl">
+        <Image
+          alt={prompt}
+          src={imageURL}
+          width={480}
+          height={480}
+          className="h-full object-cover"
+        />
+        <div className="flex flex-col gap-4 pt-6">
+          <p className="text-center text-lg">{prompt}</p>
+          {/* <p className='text-center text-lg'>{time}</p> */}
         </div>
       </div>
-    </div>
+      <div className="flex justify-end gap-2 pt-2">
+        <Button
+          variant={"ghost"}
+          size="icon"
+          onClick={() => downloadImage(imageURL, prompt)}
+          className="bg-white/80"
+        >
+          <Download className="h-4 w-4" />
+          <span className="sr-only">Download image</span>
+        </Button>
+        <Button
+          variant={"ghost"}
+          size="icon"
+          onClick={() => {
+            navigator.clipboard.writeText(
+              `https://brickblooom.com/${id || ""}`
+            );
+            console.log("Link copied to clipboard");
+          }}
+          className="bg-white/80"
+        >
+          <Copy className="h-4 w-4" />
+          <span className="sr-only">Copy image link</span>
+        </Button>
+      </div>
+    </>
   );
 };

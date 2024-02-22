@@ -22,82 +22,8 @@ import { getPlaceholderPrompt } from "@/lib/utils";
 import { getUserId } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { Container } from "@/components/Container";
+import { exampleImages } from '@/lib/utils';
 
-// const exampleImages = [
-//   '0hHdwLH',
-//   '2NKuGRl',
-//   '3lEdhRl',
-//   'Edski1u',
-//   'IhpM99Y',
-//   'LUmcEyM',
-//   'O6ctATM',
-//   'SwHDM0s',
-//   'T9NyCGp',
-//   'X93VfEI',
-//   'XxsAoIM',
-//   'obV2izq',
-//   'qJxE8uM',
-//   'sy5h2qX',
-// ];
-
-const exampleImages = [
-  {
-    key: "0hHdwLH",
-    description: "a lego taylor swift sculpture",
-  },
-  {
-    key: "2NKuGRl",
-    description: "a lego fruit basket",
-  },
-  {
-    key: "3lEdhRl",
-    description: "a lego pizza",
-  },
-  {
-    key: "Edski1u",
-    description: "a lego taxi",
-  },
-  {
-    key: "IhpM99Y",
-    description: "a lego christmas tree",
-  },
-  {
-    key: "LUmcEyM",
-    description: "lego winter wonderland",
-  },
-  {
-    key: "O6ctATM",
-    description: "a lego horse",
-  },
-  {
-    key: "SwHDM0s",
-    description: "a lego coral reef",
-  },
-  {
-    key: "T9NyCGp",
-    description: "a lego Polaroid photo",
-  },
-  {
-    key: "X93VfEI",
-    description: "a lego portrait of the mona lisa",
-  },
-  {
-    key: "XxsAoIM",
-    description: "A lego anatomical heart",
-  },
-  {
-    key: "obV2izq",
-    description: "a lego swamp monster",
-  },
-  {
-    key: "qJxE8uM",
-    description: "a lego steampunk airship",
-  },
-  {
-    key: "sy5h2qX",
-    description: "a lego elf",
-  },
-];
 
 const generateFormSchema = z.object({
   prompt: z.string().min(3).max(160),
