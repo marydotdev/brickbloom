@@ -1,19 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverActions: {
-      allowedOrigins: [
-        "replicate.com",
-        "*.api.replicate.com",
-        "api.replicate.com",
-        "replicate.delivery",
-      ],
-    },
-  },
   images: {
-    domains: [
-      "a6ar4ev9eff2kzqs.public.blob.vercel-storage.com",
-      "replicate.delivery",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "pbxt.replicate.delivery",
+      },
+      {
+        protocol: "https",
+        hostname: "rslyfbnpbdbystdg.public.blob.vercel-storage.com",
+      },
     ],
   },
 };
