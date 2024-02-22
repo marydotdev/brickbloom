@@ -48,7 +48,7 @@ const Gallery = () => {
       </div>
     );
   }
-
+        
   return (
     <div className="relative max-w-screen-2xl mx-auto w-full justify-items-center px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
       {images.map((image, index) => (
