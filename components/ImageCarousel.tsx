@@ -12,19 +12,17 @@ import Image from "next/image";
 export default function ImageCarousel({ images }: { images: { key:string; description:string;}[] }) {
   return (
     <Carousel
-    plugins={[
-      Autoplay({
-        delay: 6000,
-      }),
-    ]}
+      plugins={[
+        Autoplay({
+          delay: 6000,
+        }),
+      ]}
     >
       {/* <CarouselPrevious /> */}
       <CarouselContent>
         {images.map((image, index) => (
           <CarouselItem key={index}>
-            <div
-              className="p-4"
-            >
+            <div className="p-4">
               <div className="max-w-md mx-auto px-4 pt-4 pb-8 flex flex-col bg-white shadow-inner drop-shadow-xl">
                 <Image
                   alt="Generated image"
@@ -34,7 +32,9 @@ export default function ImageCarousel({ images }: { images: { key:string; descri
                   className="h-full object-cover"
                 />
                 <div className="flex flex-col gap-4 pt-6">
-                  <p className="text-center text-lg">{image.description}</p>
+                  <p className="uppercase font-caveat font-bold text-center text-lg balanced">
+                    {image.description}
+                  </p>
                   {/* <p className='text-center text-lg'>{time}</p> */}
                 </div>
               </div>
