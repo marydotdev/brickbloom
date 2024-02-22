@@ -12,13 +12,11 @@ import Image from "next/image";
 export default function ImageCarousel({ images }: { images: { key:string; description:string;}[] }) {
   return (
     <Carousel
-    // plugins={[
-    //   Autoplay({
-    //     delay: 4000,
-    //     stopOnInteraction: false,
-    //     loop: true,
-    //   }),
-    // ]}
+    plugins={[
+      Autoplay({
+        delay: 6000,
+      }),
+    ]}
     >
       {/* <CarouselPrevious /> */}
       <CarouselContent>
