@@ -191,33 +191,112 @@ export const exampleImages = [
 
 export const AFFILIATE_LINKS = [
   {
-    title: "Lego Icons Orchid",
-    url: "https://amzn.to/488uvKF",
-    image: "/lego-orchid.jpg",
-  },
-  {
-    title: "Lego Icons Succulents",
-    url: "https://amzn.to/4acBaoL",
-    image: "/lego-succulents.jpg",
-  },
-  {
     title: "Lego Icons Bonsai",
     url: "https://amzn.to/3Torq4O",
-    image: "/lego-bonsai.jpg",
-  },
-  {
-    title: "Lego Ideas Insect Collection",
-    url: "https://amzn.to/3NeZdJR",
-    image: "/lego-insects.jpg",
-  },
-  {
-    title: "Lego Icons Flower Bouquet",
-    url: "https://amzn.to/41ekn0x",
-    image: "/lego-bouquet.jpg",
+    image: "/ads/bonsai.png",
   },
   {
     title: "Lego Architecture Himeji Castle",
     url: "https://amzn.to/41cWOFm",
-    image: "/lego-himeji-castle.jpg",
+    image: "/ads/himeji.png",
+  },
+  {
+    title: "Lego Ideas Insect Collection",
+    url: "https://amzn.to/3NeZdJR",
+    image: "/ads/insects.png",
+  },
+  {
+    title: "Lego Icons Flower Bouquet",
+    url: "https://amzn.to/41ekn0x",
+    image: "/ads/bouquet.png",
+  },
+  {
+    title: "Lego Ideas Polaroid",
+    url: "https://amzn.to/48nIeNq",
+    image: "/ads/polaroid.png",
+  },
+  {
+    title: "Lego Icons Kingfisher",
+    url: "https://amzn.to/3uBIfQ7",
+    image: "/ads/kingfisher.png",
+  },
+  {
+    title: "Lego Icons Orchid",
+    url: "https://amzn.to/488uvKF",
+    image: "/ads/orchid.png",
+  },
+  {
+    title: "Lego Icons Succulents",
+    url: "https://amzn.to/4acBaoL",
+    image: "/ads/succulents.png",
+  },
+  {
+    title: "Lego Icons PAC-Man",
+    url: "https://amzn.to/48BokPe",
+    image: "/ads/pacman.png",
+  },
+  {
+    title: "Lego Super Mario Piranha Plant",
+    url: "https://amzn.to/3OPUPCc",
+    image: "/ads/piranhaplant.png",
+  },
+  {
+    title: "Lego Icons Concorde",
+    url: "https://amzn.to/3OVa393",
+    image: "/ads/concorde.png",
+  },
+
+  {
+    title: "Lego Ideas Jazz Quartet",
+    url: "https://amzn.to/3UPqZRS",
+    image: "/ads/quartet.png",
+  },
+  {
+    title: "Lego Architecture Empire State Building",
+    url: "https://amzn.to/42XR2IQ",
+    image: "/ads/empire.png",
+  },
+
+  {
+    title: "Lego Icons Back to The Future",
+    url: "https://amzn.to/3T9HUNS",
+    image: "/ads/delorean.png",
+  },
+  {
+    title: "Lego Icons Loop Coaster",
+    url: "https://amzn.to/49oAoEE",
+    image: "/ads/coaster.png",
+  },
+  {
+    title: "Lego Icons Ghostbusters",
+    url: "https://amzn.to/3SRZJj7",
+    image: "/ads/ecto1.png",
+  },
+  {
+    title: "Lego Harry Potter Hogwarts Express",
+    url: "https://amzn.to/3wp8I3L",
+    image: "/ads/hpexpress.png",
+  },
+  {
+    title: "Lego Technic Liebherr Crane",
+    url: "https://amzn.to/3OUZrXo",
+    image: "/ads/liebherr.png",
+  },
+
+  {
+    title: "Lego Technic Mars Rover",
+    url: "https://amzn.to/49MzocW",
+    image: "/ads/rover.png",
+  },
+
+  {
+    title: "Lego Ideas Motorized Lighthouse",
+    url: "https://amzn.to/3PhSOir",
+    image: "/ads/lighthouse.png",
+  },
+  {
+    title: "Lego Architecture Statue of Liberty",
+    url: "https://amzn.to/3T9jiVt",
+    image: "/ads/statue.png",
   },
 ];
