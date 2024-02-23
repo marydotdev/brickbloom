@@ -2,6 +2,7 @@ import { kv } from "@vercel/kv";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Body from "@/components/Body";
+import AffiliateLinks from "@/components/AffiliateLinks";
 
 async function getAllKv(id: string) {
   const data = await kv.hgetall<{
@@ -64,12 +65,15 @@ export default async function Results({
     notFound();
   }
   return (
-    <Body
-      prompt={data.prompt}
-      imageUrl={data.image}
-      redirectUrl={data.website_url}
-      modelLatency={Number(data.model_latency)}
-      id={params.id}
-    />
+    <>
+      <Body
+        prompt={data.prompt}
+        imageUrl={data.image}
+        redirectUrl={data.website_url}
+        modelLatency={Number(data.model_latency)}
+        id={params.id}
+      />
+      <AffiliateLinks />
+    </>
   );
 }
