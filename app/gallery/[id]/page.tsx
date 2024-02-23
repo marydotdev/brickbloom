@@ -2,7 +2,7 @@ import Gallery from '@/components/Gallery';
 
 export default function GalleryPage() {
   return (
-    <div>
+    <div className=''>
       <Gallery />
     </div>
   );
