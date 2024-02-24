@@ -171,7 +171,7 @@ const Body = ({
                       </FormItem>
                     )}
                   />
-                  <div className="w-full flex justify-between">
+                  <div className="w-full flex justify-center md:justify-between">
                     <Button
                       type="submit"
                       disabled={isLoading}
