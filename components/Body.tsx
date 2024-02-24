@@ -22,6 +22,7 @@ import { getPlaceholderPrompt } from "@/lib/utils";
 import { getUserId } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { Container } from "@/components/Container";
+import { DownloadShare } from "@/components/DownloadShare";
 import { exampleImages } from '@/lib/utils';
 
 
@@ -147,7 +148,7 @@ const Body = ({
             <h1 className="text-xl md:text-3xl font-bold mb-2 md:mb-4">
               Generate Lego inspired AI images
             </h1>
-            <p className="text-lg md:text-xl">Try it now, completely free</p>
+            <p className="text-lg md:text-xl">Try it now, completely free. Include the word lego in your prompt to get the best results.</p>
           </div>
           <div className="w-full max-w-md mx-auto">
             <Form {...form}>
@@ -277,6 +278,11 @@ const Body = ({
                 <div className="flex flex-col justify-center relative h-auto items-center">
                   <div className="p-4">
                     <ImageCard
+                      imageURL={response.image_url}
+                      prompt={response.prompt}
+                      id={response.id}
+                    />
+                    <DownloadShare
                       imageURL={response.image_url}
                       prompt={response.prompt}
                       id={response.id}

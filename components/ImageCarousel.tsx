@@ -32,7 +32,7 @@ export default function ImageCarousel({ images }: { images: { key:string; descri
                   className="h-full object-cover"
                 />
                 <div className="flex flex-col gap-4 pt-6">
-                  <p className="uppercase font-caveat font-bold text-center text-lg balanced">
+                  <p className="uppercase font-protest font-bold text-center text-lg balanced">
                     {image.description}
                   </p>
                   {/* <p className='text-center text-lg'>{time}</p> */}

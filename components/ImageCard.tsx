@@ -33,35 +33,11 @@ export const ImageCard: React.FC<ImageCardProps> = ({
           className="h-full object-cover"
         />
         <div className="flex flex-col gap-4 pt-6">
-          <p className="uppercase font-caveat font-bold text-center text-lg h-12 balanced overflow-clip leading-snug">{prompt}</p>
+          <p className="uppercase font-protest font-bold text-center text-lg h-12 balanced overflow-clip leading-snug">{prompt}</p>
           {/* <p className='text-center text-lg'>{time}</p> */}
         </div>
       </div>
-      <div className="flex justify-end gap-2 pt-2">
-        <Button
-          variant={"ghost"}
-          size="icon"
-          onClick={() => downloadImage(imageURL, prompt)}
-          className="bg-white/80"
-        >
-          <Download className="h-4 w-4" />
-          <span className="sr-only">Download image</span>
-        </Button>
-        <Button
-          variant={"ghost"}
-          size="icon"
-          onClick={() => {
-            navigator.clipboard.writeText(
-              `https://brickbloom.com/${id || ""}`
-            );
-            console.log("Link copied to clipboard");
-          }}
-          className="bg-white/80"
-        >
-          <Copy className="h-4 w-4" />
-          <span className="sr-only">Copy image link</span>
-        </Button>
-      </div>
+
     </>
   );
 };

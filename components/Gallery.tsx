@@ -14,6 +14,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { DownloadShare } from "@/components/DownloadShare";
 import { Trash } from "lucide-react";
 
 type Image = {
@@ -56,13 +57,16 @@ const Gallery = () => {
             key={index}
             className="relative max-w-md px-2 py-4 flex flex-col gap-4 bg-white lg:hover:transform  lg:hover:scale-105 transition-all duration-100 ease-in-out"
           >
-            <a href={`/${image.id}`}>
-              <ImageCard
-                imageURL={image.image_url}
-                prompt={image.prompt}
-                id={image.id}
-              />
-            </a>
+            <div>
+              <a href={`/${image.id}`}>
+                <ImageCard
+                  imageURL={image.image_url}
+                  prompt={image.prompt}
+                  id={image.id}
+                />
+              </a>
+              <DownloadShare imageURL={image.image_url} prompt={image.prompt} id={image.id} />
+            </div>
             <div className="absolute bottom-4">
               <Dialog>
                 <DialogTrigger asChild>

@@ -1,6 +1,7 @@
 
 import "./globals.css";
-import { Inter, Caveat } from "next/font/google";
+import { Inter, Caveat, Permanent_Marker } from "next/font/google";
+import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import {Layout} from "@/components/Layout";
 
@@ -15,10 +16,20 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
-const caveat = Caveat({
-  variable: "--font-caveat",
+// const caveat = Caveat({
+//   variable: "--font-caveat",
+//   subsets: ["latin"],
+// });
+const pm = Permanent_Marker({
+  variable: "--font-pm",
+  weight: "400",
   subsets: ["latin"],
 });
+const protest = localFont({
+  src: "../public/fonts/ProtestRiot-Regular.ttf",
+  variable: "--font-protest",
+});
+
 
 
 export const metadata: Metadata = {
@@ -35,7 +46,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       className={cn(
         "min-h-screen antialiased",
         inter.variable,
-        caveat.variable
+        protest.variable
       )}
     >
       <head />

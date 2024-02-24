@@ -21,6 +21,8 @@ const config = {
       fontFamily: {
         caveat: ["var(--font-caveat)", "cursive"],
         inter: ["var(--font-inter)", "system-ui", "sans-serif"],
+        pm: ["var(--font-pm)", "cursive"],
+        protest: ["var(--font-protest)", "cursive"],
       },
       keyframes: {
         "accordion-down": {
