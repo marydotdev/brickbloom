@@ -1,7 +1,4 @@
 import Image from "next/image";
-import downloadImage from "@/lib/downloadImage";
-import { Button } from "@/components/ui/button";
-import { Copy, Download } from "lucide-react";
 
 type ImageCardProps = {
   imageURL?: string;

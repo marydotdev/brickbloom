@@ -25,6 +25,7 @@ import { Container } from "@/components/Container";
 import { DownloadShare } from "@/components/DownloadShare";
 import { exampleImages } from '@/lib/utils';
 
+const galleryImages = exampleImages.sort(() => Math.random() - 0.5);
 
 const generateFormSchema = z.object({
   prompt: z.string().min(3).max(160),
@@ -291,32 +292,11 @@ const Body = ({
                 </div>
               ) : (
                 <div className="max-w-lg mx-auto">
-                  <ImageCarousel images={exampleImages} />
+                  <ImageCarousel images={galleryImages} />
                 </div>
               )}
             </div>
-            {/* {response && (
-                <div className="flex justify-center gap-5 mt-4">
-                  <Button
-                  // onClick={() =>
-                  //   downloadImage(response.image_url, "brickbloom")
-                  // }
-                  >
-                    Download
-                  </Button>
-                  <Button
-                    variant="outline"
-                    // onClick={() => {
-                    //   navigator.clipboard.writeText(
-                    //     `https://brickblooom.com/${id || ""}`
-                    //   );
-                    //   toast.success("Link copied to clipboard");
-                    // }}
-                  >
-                    Share
-                  </Button>
-                </div>
-              )} */}
+
           </div>
         </div>
       </div>

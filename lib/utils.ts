@@ -131,14 +131,14 @@ export function getPlaceholderPrompt() {
 }
 
 export const exampleImages = [
-  {
-    key: "0hHdwLH",
-    description: "a lego taylor swift sculpture",
-  },
-  {
-    key: "2NKuGRl",
-    description: "a lego fruit basket",
-  },
+  // {
+  //   key: "0hHdwLH",
+  //   description: "a lego taylor swift sculpture",
+  // },
+  // {
+  //   key: "2NKuGRl",
+  //   description: "a lego fruit basket",
+  // },
   {
     key: "3lEdhRl",
     description: "a lego pizza",
@@ -186,6 +186,56 @@ export const exampleImages = [
   {
     key: "sy5h2qX",
     description: "a lego elf",
+  },
+  {
+    key: "delorean",
+    description: "a lego Delorean from Back to the Future",
+  },
+  {
+    key: "chihuahua",
+    description: "a lego chihuahua wearing a sombrero",
+  },
+  {
+    key: "hamster",
+    description: "a lego hamster wearing a winter coat and hat",
+  },
+  {
+    key: "koi",
+    description: "a lego koi pond",
+  },
+  {
+    key: "leprechaun",
+    description:
+      "a lego leprechaun sitting near a pot of gold at the end of a rainbow",
+  },
+  {
+    key: "draculacastle",
+    description: "a lego model of dracula's castle",
+  },
+  {
+    key: "fancytoad",
+    description: "a lego toad wearing a tuxedo and top hat",
+  },
+  {
+    key: "trex",
+    description:
+      "a lego tyrannosaurus rex riding a unicycle while juggling three red balls and wearing overalls and glasses while other dinosaurs crowd around to watch",
+  },
+  {
+    key: "rabbit",
+    description: "a lego white rabbit detective with a monocle and pipe",
+  },
+  {
+    key: "wolverine",
+    description: "lego Hugh Jackman Wolverine",
+  },
+  {
+    key: "magician",
+    description: "a lego magician pulling a rabbit out of a hat",
+  },
+  {
+    key: "witch",
+    description: "lego witch brewing a potion in a cauldron",
   },
 ];
 
