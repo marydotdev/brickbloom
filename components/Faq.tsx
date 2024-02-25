@@ -13,9 +13,9 @@ export default function Faq() {
       </div>
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
-          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionTrigger>Do I have to include the word {'Lego'} in my prompt?</AccordionTrigger>
           <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
+            Yes. Including the word lego in your prompt will give you the best results. It&apos;s best to structure prompts like {"a lego house"} or {"george washington as a lego"} or {"a lego model of the eiffel tower"}.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
