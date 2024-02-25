@@ -24,6 +24,7 @@ import { useRouter } from "next/navigation";
 import { Container } from "@/components/Container";
 import { DownloadShare } from "@/components/DownloadShare";
 import { exampleImages } from '@/lib/utils';
+import va from '@vercel/analytics';
 
 const galleryImages = exampleImages.sort(() => Math.random() - 0.5);
 
@@ -122,15 +123,15 @@ const Body = ({
         });
         localStorage.setItem(userId, JSON.stringify(userImages)); // Save back to localStorage
 
-        // va.track("Generated image", {
-        //   prompt: values.prompt,
-        // });
+        va.track("Generated image", {
+          prompt: values.prompt,
+        });
 
         router.push(`/${data.id}`);
       } catch (error) {
-        // va.track("Failed to generate", {
-        //   prompt: values.prompt,
-        // });
+        va.track("Failed to generate", {
+          prompt: values.prompt,
+        });
         if (error instanceof Error) {
           setError(error);
         }
@@ -233,7 +234,6 @@ const Body = ({
                 </div>
               )}
             </div>
-
           </div>
         </div>
       </div>

@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import {Layout} from "@/components/Layout";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import type { Metadata } from "next";
 
@@ -23,18 +25,40 @@ const protest = localFont({
 });
 
 
+let title = "Brickbloom";
+let description = "Generate Lego inspired AI imagess";
+let url = "https://www.brickbloom.com";
+let ogimage = "https://www.brickbloom.com/og-image.png";
+let sitename = "brickbloom.com";
 
 export const metadata: Metadata = {
-  title: "Brickbloom",
-  description: "Generate Lego inspired AI images",
+  metadataBase: new URL(url),
+  title,
+  description,
+  icons: {
+    icon: "/favicon.ico",
+  },
+  openGraph: {
+    images: [ogimage],
+    title,
+    description,
+    url: url,
+    siteName: sitename,
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [ogimage],
+    title,
+    description,
+  },
 };
-
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
-      suppressHydrationWarning
       className={cn(
         "min-h-screen antialiased",
         inter.variable,
@@ -46,29 +70,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <div className="flex min-h-full flex-col">
           <Layout>{children}</Layout>
         </div>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
 }
 
 
-{/* <html lang="en" suppressHydrationWarning>
-  <head />
-  <body
-    className={cn("min-h-screen antialiased", inter.variable, caveat.variable)}
-  >
-    <div className="px-4 md:px-8">
-      <div className="pt-4 md:pt-8">
-        <div className="max-w-7xl mx-auto flex justify-between">
-          <h1 className="text-xl md:text-2xl font-bold mb-4">
-            <a href="/">brickbloom</a>
-          </h1>
-          <div className="h-6">
-            <UserId />
-          </div>
-        </div>
-      </div>
-      <main className="flex min-h-full flex-col">{children}</main>
-    </div>
-  </body>
-</html>; */}
