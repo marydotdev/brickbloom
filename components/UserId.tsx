@@ -9,7 +9,6 @@ const UserId = () => {
 
   useEffect(() => {
     const userId = getUserId();
-    console.log(`User ID: ${userId}`);
     setUserId(userId);
   }, []);
 
@@ -18,7 +17,7 @@ const UserId = () => {
       <a href={`/gallery/${userId}`}>
         <div className='flex items-center gap-2'>
           <Images className="h-4 w-4" />
-          <p className="hidden md:inline-block md:text-md">Gallery</p>
+          <p className="inline-block">Gallery</p>
         </div>
       </a>
     </div>
