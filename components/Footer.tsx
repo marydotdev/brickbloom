@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="">
       <div className="pt-12 pb-4 w-full h-full">
         <Container>
-          <p className="text-center text-zinc-400 font-thin text-sm md:text-lg">
+          <p className="text-zinc-400 text-xs md:text-sm text-center balanced w-fit mx-auto">
             made by{" "}
             <a
               href="https://twitter.com/marydotdev"

@@ -1,6 +1,6 @@
 
 import "./globals.css";
-import { Inter, Caveat, Permanent_Marker } from "next/font/google";
+import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import {Layout} from "@/components/Layout";
@@ -16,15 +16,7 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
-// const caveat = Caveat({
-//   variable: "--font-caveat",
-//   subsets: ["latin"],
-// });
-const pm = Permanent_Marker({
-  variable: "--font-pm",
-  weight: "400",
-  subsets: ["latin"],
-});
+
 const protest = localFont({
   src: "../public/fonts/ProtestRiot-Regular.ttf",
   variable: "--font-protest",
