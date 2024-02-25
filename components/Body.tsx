@@ -55,6 +55,7 @@ const Body = ({
   const [submittedURL, setSubmittedURL] = useState<string | null>(null);
   const [placeholderPrompt, setPlaceholderPrompt] = useState("");
 
+
   useEffect(() => {
     if (promptValue) {
       setPlaceholderPrompt("");
@@ -93,6 +94,7 @@ const Body = ({
     async (values: GenerateFormValues) => {
       setIsLoading(true);
       setResponse(null);
+
 
       try {
         const request: GenerateRequest = {
@@ -150,7 +152,10 @@ const Body = ({
             <h1 className="text-xl md:text-3xl font-bold mb-2 md:mb-4">
               Generate Lego inspired AI images
             </h1>
-            <p className="text-lg md:text-xl">Try it now, completely free. Include the word lego in your prompt to get the best results.</p>
+            <p className="text-lg md:text-xl">
+              Try it now, completely free. Include the word lego in your prompt
+              to get the best results.
+            </p>
           </div>
           <div className="w-full max-w-md mx-auto">
             <Form {...form}>
@@ -231,6 +236,7 @@ const Body = ({
               ) : (
                 <div className="max-w-lg mx-auto">
                   <ImageCarousel images={galleryImages} />
+                  <div className="pb-12" />
                 </div>
               )}
             </div>

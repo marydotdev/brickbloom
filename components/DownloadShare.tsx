@@ -1,6 +1,7 @@
 import downloadImage from "@/lib/downloadImage";
 import { Button } from "@/components/ui/button";
 import { Copy, Download } from "lucide-react";
+import { toast } from "sonner";
 
 type ImageCardProps = {
   imageURL?: string;
@@ -28,7 +29,7 @@ export const DownloadShare: React.FC<ImageCardProps> = ({
           variant={"ghost"}
           size="icon"
           onClick={() => downloadImage(imageURL, prompt)}
-          className="bg-white/80"
+          className="hidden md:block md:bg-white/80"
         >
           <Download className="h-4 w-4" />
           <span className="sr-only">Download image</span>
@@ -38,7 +39,7 @@ export const DownloadShare: React.FC<ImageCardProps> = ({
           size="icon"
           onClick={() => {
             navigator.clipboard.writeText(`https://brickbloom.com/${id || ""}`);
-            console.log("Link copied to clipboard");
+            toast.success("Link copied to clipboard");
           }}
           className="bg-white/80"
         >

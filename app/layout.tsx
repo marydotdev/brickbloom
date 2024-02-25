@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import {Layout} from "@/components/Layout";
+import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <div className="flex min-h-full flex-col">
           <Layout>{children}</Layout>
         </div>
+        <Toaster />
         <Analytics />
         <SpeedInsights />
       </body>

@@ -29,7 +29,7 @@ export async function generateMetadata({
 
   const title = `Brickbloom: ${data.prompt}`;
   const description = `Generate Lego inspired AI images`;
-  const image = data.image || "https://brickbloom.com/opengraph-image.png";
+  const image = data.image || "https://brickbloom.com/og-image.png";
 
   return {
     title,
