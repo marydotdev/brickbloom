@@ -6,8 +6,8 @@ const ads = AFFILIATE_LINKS;
 
 export default function AffiliateLinks() {
   return (
-    <div className="w-full py-12">
-      <div className="w-full flex gap-4 md:gap-12 overflow-x-auto">
+    <div className="w-full py-12 px-4">
+      <div className="w-full flex gap-4 md:gap-12 overflow-x-scroll horizontal-scroll">
         <div className="p-1 flex-shrink-0 flex flex-col justify-center">
           <Link href={ads[0].url} target="_blank" className="flex-shrink-0">
             <Image
