@@ -150,11 +150,11 @@ const Body = ({
         <div className="col-span-1 flex flex-col h-full justify-start gap-4 md:gap-12 pt-4 md:pt-12">
           <div className="w-full max-w-md mx-auto">
             <h1 className="text-xl md:text-3xl font-bold mb-2 md:mb-4">
-              Generate Lego inspired AI images
+              Imagine <i>any</i> lego set.
             </h1>
             <p className="text-lg md:text-xl">
-              Try it now, completely free. Include the word lego in your prompt
-              to get the best results.
+              Try it now, completely free. Include the word &quot;lego&quot; in
+              your prompt to get the best results.
             </p>
           </div>
           <div className="w-full max-w-md mx-auto">
@@ -213,6 +213,20 @@ const Body = ({
                 <AlertDescription>{error.message}</AlertDescription>
               </Alert>
             )}
+          </div>
+          <div className="w-full max-w-md mx-auto">
+            <p className="text-xs md:text-sm">
+              Brickbloom uses a fine tuned model of SDXL that was trained on
+              lego sets. View the open source code on{" "}
+              <a
+                href="https://github.com/marydotdev/brickbloom"
+                target="_blank"
+                className="hover:underline"
+              >
+                GitHub
+              </a>
+              .
+            </p>
           </div>
         </div>
         <div className="col-span-1 flex flex-col h-full justify-end">

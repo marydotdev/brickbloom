@@ -50,7 +50,7 @@ const Gallery = () => {
   // }
 
   return (
-    <div className="relative max-w-screen-2xl mx-auto w-full justify-items-center px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+    <div className="relative min-h-[60vh] md:min-h-[70vh] h-full max-w-screen-2xl mx-auto w-full justify-items-center px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
       {images ? (
         images.map((image, index) => (
           <div
@@ -65,7 +65,11 @@ const Gallery = () => {
                   id={image.id}
                 />
               </a>
-              <DownloadShare imageURL={image.image_url} prompt={image.prompt} id={image.id} />
+              <DownloadShare
+                imageURL={image.image_url}
+                prompt={image.prompt}
+                id={image.id}
+              />
             </div>
             <div className="absolute bottom-4">
               <Dialog>

@@ -29,7 +29,7 @@ export const DownloadShare: React.FC<ImageCardProps> = ({
           variant={"ghost"}
           size="icon"
           onClick={() => downloadImage(imageURL, prompt)}
-          className="hidden md:block md:bg-white/80"
+          className="hidden md:flex md:justify-center md:bg-white/80"
         >
           <Download className="h-4 w-4" />
           <span className="sr-only">Download image</span>

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { getUserId } from "@/lib/utils";
-import { Images } from 'lucide-react';
 
 const UserId = () => {
   const [userId, setUserId] = useState<string | null>(null);
@@ -13,12 +12,9 @@ const UserId = () => {
   }, []);
 
   return (
-    <div>
+    <div className="text-zinc-400 hover:text-zinc-800">
       <a href={`/gallery/${userId}`}>
-        <div className='flex items-center gap-2'>
-          <Images className="h-4 w-4" />
-          <p className="inline-block">Gallery</p>
-        </div>
+          <p className="inline-block">gallery</p>
       </a>
     </div>
   );
