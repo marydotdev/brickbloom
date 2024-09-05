@@ -12,19 +12,19 @@ import {
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { GenerateRequest, GenerateResponse } from "@/lib/types";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { ImageCard } from "@/components/ImageCard";
-import  ImageCarousel  from "@/components/ImageCarousel";
+import ImageCarousel from "@/components/ImageCarousel";
 import LoadingDots from "@/components/ui/loading-dots";
 import { getPlaceholderPrompt } from "@/lib/utils";
 import { getUserId } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { Container } from "@/components/Container";
 import { DownloadShare } from "@/components/DownloadShare";
-import { exampleImages } from '@/lib/utils';
-import va from '@vercel/analytics';
+import { exampleImages } from "@/lib/utils";
+import va from "@vercel/analytics";
 
 const galleryImages = exampleImages.sort(() => Math.random() - 0.5);
 
@@ -54,7 +54,7 @@ const Body = ({
   const [response, setResponse] = useState<GenerateResponse | null>(null);
   const [submittedURL, setSubmittedURL] = useState<string | null>(null);
   const [placeholderPrompt, setPlaceholderPrompt] = useState("");
-
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     if (promptValue) {
@@ -69,8 +69,6 @@ const Body = ({
   const form = useForm<GenerateFormValues>({
     resolver: zodResolver(generateFormSchema),
     mode: "onChange",
-
-    // Set default values so that the form inputs are controlled components.
     defaultValues: {
       prompt: "",
     },
@@ -90,11 +88,23 @@ const Body = ({
     }
   }, [imageUrl, modelLatency, prompt, redirectUrl, id, form]);
 
+  const handleCancel = useCallback(() => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+      setIsLoading(false);
+      setError(new Error("Image generation cancelled"));
+      va.track("Cancelled generation");
+    }
+  }, []);
+
   const handleSubmit = useCallback(
     async (values: GenerateFormValues) => {
       setIsLoading(true);
       setResponse(null);
+      setError(null);
 
+      // Create a new AbortController for this request
+      abortControllerRef.current = new AbortController();
 
       try {
         const request: GenerateRequest = {
@@ -103,9 +113,9 @@ const Body = ({
         const response = await fetch("/api/generate", {
           method: "POST",
           body: JSON.stringify(request),
+          signal: abortControllerRef.current.signal,
         });
 
-        // Handle API errors.
         if (!response.ok || response.status !== 200) {
           const text = await response.text();
           throw new Error(
@@ -114,16 +124,13 @@ const Body = ({
         }
 
         const data = await response.json();
-        const userId = getUserId(); // Retrieve the userId
-
-        // Retrieve existing images for the user, or initialize an empty array
+        const userId = getUserId();
         const userImages = JSON.parse(localStorage.getItem(userId) || "[]");
-        // Add the new image data along with the prompt
         userImages.push({
           ...data,
-          prompt: values.prompt, // Include the prompt in the object
+          prompt: values.prompt,
         });
-        localStorage.setItem(userId, JSON.stringify(userImages)); // Save back to localStorage
+        localStorage.setItem(userId, JSON.stringify(userImages));
 
         va.track("Generated image", {
           prompt: values.prompt,
@@ -131,14 +138,20 @@ const Body = ({
 
         router.push(`/${data.id}`);
       } catch (error) {
-        va.track("Failed to generate", {
-          prompt: values.prompt,
-        });
-        if (error instanceof Error) {
-          setError(error);
+        if (error instanceof Error && error.name === "AbortError") {
+          // Handle abort error
+          setError(new Error("Image generation cancelled"));
+        } else {
+          va.track("Failed to generate", {
+            prompt: values.prompt,
+          });
+          if (error instanceof Error) {
+            setError(error);
+          }
         }
       } finally {
         setIsLoading(false);
+        abortControllerRef.current = null;
       }
     },
     [router]
@@ -147,7 +160,7 @@ const Body = ({
   return (
     <Container>
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 mt-2 md:mt-4">
-        <div className="col-span-1 flex flex-col h-full justify-start gap-4 md:gap-12 pt-4 md:pt-12">
+        <div className="col-span-1 flex flex-col h-full justify-start gap-4 md:gap-8 pt-4 md:pt-12">
           <div className="w-full max-w-md mx-auto">
             <h1 className="text-xl md:text-3xl font-bold mb-2 md:mb-4">
               Imagine <i>any</i> lego set.
@@ -173,45 +186,63 @@ const Body = ({
                             {...field}
                           />
                         </FormControl>
-                        <FormMessage />
+                        <div className="h-2">
+                          <FormMessage />
+                        </div>
                       </FormItem>
                     )}
                   />
-                  <div className="w-full flex justify-center md:justify-between">
-                    <Button
-                      type="submit"
-                      disabled={isLoading}
-                      className="inline-flex justify-center
-                 max-w-[200px] w-full"
-                    >
+                  <div className="w-full flex flex-col">
+                    <div className="w-full flex items-center justify-between">
+                      <Button
+                        type="submit"
+                        disabled={isLoading}
+                        className="inline-flex justify-center max-w-[200px] w-full"
+                      >
+                        {isLoading ? (
+                          <LoadingDots style="large" color="#fff" />
+                        ) : (
+                          "Generate"
+                        )}
+                      </Button>
                       {isLoading ? (
-                        <LoadingDots style="large" color="#fff" />
-                      ) : response ? (
-                        "Generate"
+                        <Button
+                          type="button"
+                          variant={"destructive"}
+                          onClick={handleCancel}
+                        >
+                          Cancel
+                        </Button>
                       ) : (
-                        "Generate"
+                        ""
                       )}
-                    </Button>
-                    {/* <Button
-                      type="submit"
-                      onClick={() => form.reset()}
-                      className="inline-flex justify-center
-                 max-w-[200px] w-full"
-                    >
-                      Clear
-                    </Button> */}
+                    </div>
+                    <div className="h-8 mt-2 flex items-center">
+                      {" "}
+                      {/* Fixed height container */}
+                      {isLoading ? (
+                        <>
+                          <p className="text-sm text-gray-500 mr-2">
+                            Generating...
+                          </p>
+                        </>
+                      ) : (
+                        <div className="invisible">Placeholder</div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </form>
             </Form>
           </div>
-          <div className="w-full max-w-md mx-auto">
-            {error && (
+          <div className="w-full max-w-md mx-auto -mt-6 md:mt-0 md:h-20">
+            {error ? (
               <Alert variant="destructive">
-                <div className="h-4 w-4 rounded-full" />
                 <AlertTitle>Error</AlertTitle>
                 <AlertDescription>{error.message}</AlertDescription>
               </Alert>
+            ) : (
+              <div className="invisible">Error placeholder</div>
             )}
           </div>
           <div className="w-full max-w-md mx-auto">
