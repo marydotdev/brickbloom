@@ -32,17 +32,24 @@ let url = "https://www.brickbloom.com";
 let ogimage = "https://www.brickbloom.com/og-image.png";
 let sitename = "brickbloom.com";
 
+
 export const metadata: Metadata = {
   metadataBase: new URL(url),
-  title,
-  description,
-  icons: {
-    icon: "/favicon.ico",
-  },
+  title: "Brickbloom - Generate Lego-inspired AI Images",
+  description: "Create unique Lego-style images with AI. Free, easy, and fun!",
+  keywords: ["Lego", "AI", "image generator", "SDXL", "Brickbloom"],
   openGraph: {
-    images: [ogimage],
-    title,
-    description,
+    images: [
+      {
+        url: ogimage,
+        width: 1200,
+        height: 630,
+        alt: "Brickbloom - Lego AI Image Generator",
+      },
+    ],
+    title: "Brickbloom - Generate Lego-inspired AI Images",
+    description:
+      "Create unique Lego-style images with AI. Free, easy, and fun!",
     url: url,
     siteName: sitename,
     locale: "en_US",
@@ -50,9 +57,18 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    images: [ogimage],
-    title,
-    description,
+    images: [
+      {
+        url: ogimage,
+        width: 1200,
+        height: 630,
+        alt: "Brickbloom - Lego AI Image Generator",
+      },
+    ],
+    title: "Brickbloom - Generate Lego-inspired AI Images",
+    description:
+      "Create unique Lego-style images with AI. Free, easy, and fun!",
+    creator: "@marydotdev",
   },
 };
 
