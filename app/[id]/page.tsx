@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Body from "@/components/Body";
 import AffiliateLinks from "@/components/AffiliateLinks";
+import { AffiliateMarquee }from "@/components/AffiliateMarquee";
 
 async function getAllKv(id: string) {
   const data = await kv.hgetall<{
@@ -74,6 +75,7 @@ export default async function Results({
         id={params.id}
       />
       <AffiliateLinks />
+      <AffiliateMarquee />
     </>
   );
 }
