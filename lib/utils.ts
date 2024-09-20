@@ -350,3 +350,4 @@ export const AFFILIATE_LINKS = [
     image: "/ads/statue.png",
   },
 ];
+
