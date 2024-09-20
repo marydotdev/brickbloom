@@ -22,13 +22,17 @@ export const DownloadShare: React.FC<ImageCardProps> = ({
     );
   }
 
+  // Extract the file extension from the image URL
+  const fileExtension = imageURL.split('.').pop(); // Get the last part after the last dot
+  const fileName = `${prompt.replace(/\s+/g, '_')}.${fileExtension}`; // Create a filename with the prompt and correct extension
+
   return (
     <>
       <div className="flex justify-end gap-2 pt-2">
         <Button
           variant={"ghost"}
           size="icon"
-          onClick={() => downloadImage(imageURL, prompt)}
+          onClick={() => downloadImage(imageURL, fileName)} // Pass the correct filename
           className="hidden md:flex md:justify-center md:bg-white/80"
         >
           <Download className="h-4 w-4" />
