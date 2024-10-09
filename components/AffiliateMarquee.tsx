@@ -24,7 +24,9 @@ const ReviewCard = ({
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={cn("relative w-72 flex items-center justify-center overflow-hidden p-4 transition-transform duration-200 transform md:hover:scale-110")}
+      className={cn(
+        "relative w-72 flex items-center justify-center overflow-hidden p-4 transition-transform duration-200 transform md:hover:scale-110"
+      )}
     >
       <Image
         src={image}
@@ -40,12 +42,19 @@ const ReviewCard = ({
 export function AffiliateMarquee() {
   return (
     <div className="my-12 relative flex gap-12 h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg">
-      <Marquee pauseOnHover className="[--duration:200s]">
+      <Marquee pauseOnHover className="[--duration:80s] sm:[--duration:200s]">
+
         {firstRow.map((ad) => (
           <ReviewCard key={ad.title} {...ad} />
         ))}
       </Marquee>
-      <Marquee reverse pauseOnHover className="[--duration:200s]">
+
+      <Marquee
+        reverse
+        pauseOnHover
+        className="[--duration:80s] sm:[--duration:200s]"
+      >
+
         {secondRow.map((ad) => (
           <ReviewCard key={ad.title} {...ad} />
         ))}
