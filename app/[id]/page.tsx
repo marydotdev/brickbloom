@@ -74,8 +74,12 @@ export default async function Results({
         modelLatency={Number(data.model_latency)}
         id={params.id}
       />
-      {/* <AffiliateLinks /> */}
-      <AffiliateMarquee />
+      <div className="block sm:hidden">
+        <AffiliateLinks />
+      </div>
+      <div className="hidden sm:block">
+        <AffiliateMarquee />
+      </div>
     </>
   );
 }
