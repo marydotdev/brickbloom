@@ -7,8 +7,12 @@ export default function Home() {
   return (
     <>
       <Body />
-      {/* <AffiliateLinks /> */}
-      <AffiliateMarquee />
+      <div className='block sm:hidden'>
+        <AffiliateLinks />
+      </div>
+      <div className='hidden sm:block'>
+        <AffiliateMarquee />
+      </div>
     </>
   );
 }

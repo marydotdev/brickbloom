@@ -43,7 +43,6 @@ export function AffiliateMarquee() {
   return (
     <div className="my-12 relative flex gap-12 h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg">
       <Marquee pauseOnHover className="[--duration:80s] sm:[--duration:200s]">
-
         {firstRow.map((ad) => (
           <ReviewCard key={ad.title} {...ad} />
         ))}
@@ -54,7 +53,6 @@ export function AffiliateMarquee() {
         pauseOnHover
         className="[--duration:80s] sm:[--duration:200s]"
       >
-
         {secondRow.map((ad) => (
           <ReviewCard key={ad.title} {...ad} />
         ))}
