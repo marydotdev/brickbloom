@@ -47,6 +47,7 @@ export function AffiliateMarquee() {
           <ReviewCard key={ad.title} {...ad} />
         ))}
       </Marquee>
+
       <Marquee
         reverse
         pauseOnHover
