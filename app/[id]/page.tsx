@@ -106,8 +106,12 @@ export default async function Results({
         id={params.id}
         promptValue={data.prompt}
       />
-      <AffiliateLinks />
-      <AffiliateMarquee />
+      <div className="block sm:hidden">
+        <AffiliateLinks />
+      </div>
+      <div className="hidden sm:block">
+        <AffiliateMarquee />
+      </div>
     </>
   );
 }
