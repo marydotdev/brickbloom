@@ -6,14 +6,46 @@ import AffiliateLinks from "@/components/AffiliateLinks";
 import { AffiliateMarquee } from "@/components/AffiliateMarquee";
 
 async function getAllKv(id: string) {
-  const data = await kv.hgetall<{
-    prompt: string;
-    image?: string;
-    website_url?: string;
-    model_latency?: string;
-  }>(id);
+  try {
+    // First try to get as hash (new format)
+    const hashData = await kv.hgetall<{
+      prompt: string;
+      image_url?: string;
+      model_latency_ms?: number;
+      id?: string;
+    }>(id);
 
-  return data;
+    if (hashData && Object.keys(hashData).length > 0) {
+      return hashData;
+    }
+
+    // If hash doesn't work, try to get as regular key (fallback for old format)
+    const regularData = await kv.get<{
+      prompt: string;
+      image_url?: string;
+      model_latency_ms?: number;
+      id?: string;
+    }>(id);
+
+    if (regularData) {
+      return regularData;
+    }
+
+    return null;
+  } catch (error) {
+    console.error("Error retrieving from KV:", error);
+
+    // If there's a type error, the key might exist but be in wrong format
+    // Try to clean it up and return null so the page shows not found
+    try {
+      await kv.del(id);
+      console.log(`Cleaned up incorrectly formatted key: ${id}`);
+    } catch (cleanupError) {
+      console.error("Error cleaning up key:", cleanupError);
+    }
+
+    return null;
+  }
 }
 
 export async function generateMetadata({
@@ -24,32 +56,27 @@ export async function generateMetadata({
   };
 }): Promise<Metadata | undefined> {
   const data = await getAllKv(params.id);
+
   if (!data) {
-    return;
+    return {
+      title: "Image Not Found - Brickbloom",
+      description: "The requested image could not be found.",
+    };
   }
 
-  const title = `Brickbloom: ${data.prompt}`;
-  const description = `Generate Lego inspired AI images`;
-  const image = data.image || "https://brickbloom.com/og-image.png";
-
   return {
-    title,
-    description,
+    title: `${data.prompt} - Brickbloom`,
+    description: `Generated LEGO image: ${data.prompt}`,
     openGraph: {
-      title,
-      description,
-      images: [
-        {
-          url: image,
-        },
-      ],
+      title: `${data.prompt} - Brickbloom`,
+      description: `Generated LEGO image: ${data.prompt}`,
+      images: data.image_url ? [{ url: data.image_url }] : [],
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
-      images: [image],
-      creator: "@marydotdev",
+      title: `${data.prompt} - Brickbloom`,
+      description: `Generated LEGO image: ${data.prompt}`,
+      images: data.image_url ? [data.image_url] : [],
     },
   };
 }
@@ -62,24 +89,25 @@ export default async function Results({
   };
 }) {
   const data = await getAllKv(params.id);
+
   if (!data) {
     notFound();
   }
+
+  const modelLatency = data.model_latency_ms;
+
   return (
     <>
       <Body
+        imageUrl={data.image_url}
         prompt={data.prompt}
-        imageUrl={data.image}
-        redirectUrl={data.website_url}
-        modelLatency={Number(data.model_latency)}
+        redirectUrl={`/${params.id}`}
+        modelLatency={modelLatency}
         id={params.id}
+        promptValue={data.prompt}
       />
-      <div className="block sm:hidden">
-        <AffiliateLinks />
-      </div>
-      <div className="hidden sm:block">
-        <AffiliateMarquee />
-      </div>
+      <AffiliateLinks />
+      <AffiliateMarquee />
     </>
   );
 }
